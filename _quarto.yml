@@ -1,0 +1,22 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Mechanistic Eco-Evolutionary Modelling"
+  subtitle: "A Critical Computational Approach to Understanding Biodiversity Dynamics (16-18 March SoSe 2026)"
+  author: Oskar Hagen (hagen@c3s.uni-frankfurt.de)
+  date: "1 March 2026"
+  chapters:
+    - index.qmd
+    - day1.qmd
+    - day2.qmd
+    - day3.qmd
+    - materials.qmd
+
+format:
+  html:
+    theme: cosmo
+    number-sections: false
+
+editor: visual

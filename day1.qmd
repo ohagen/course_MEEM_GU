@@ -1,0 +1,26 @@
+---
+title: "Day 1: Foundations and introduction to models"
+---
+
+## Program {.unnumbered}
+
+- **Lecture:** Historical and philosophical perspectives on (mechanistic) scientific simulation models in biodiversity research.
+- **Break**
+- **Lecture:** Critical overview of `gen3sis`: mechanistic modelling of eco-evolutionary processes.
+- **Lunch Break**
+- **Practical:** Creating and managing simulated landscapes in `gen3sis`.
+- **Break**
+- **Practical:** Formulating and coding eco-evolutionary processes in `gen3sis`.
+
+## Core material used {.unnumbered}
+
+- CBA setup and basics:
+  - [Day1_Prac1_setup.qmd](../ref/CBAGen3sis-main/Day1_Prac1_setup.qmd)
+  - [Day1_Prac2_basics.qmd](../ref/CBAGen3sis-main/Day1_Prac2_basics.qmd)
+  - [Day1_Prac3_islands.qmd](../ref/CBAGen3sis-main/Day1_Prac3_islands.qmd)
+- YoMos workshop foundations:
+  - [gen3sis_workshop.qmd](../ref/gen3sis_yomos_2024-main/gen3sis_workshop.qmd) (Sections 1–2)
+- Day 1 configuration references:
+  - [config_islands_Day1Prac1.R](../ref/CBAGen3sis-main/configs/config_islands_Day1Prac1.R)
+  - [config_southamerica_Day1Prac1.R](../ref/CBAGen3sis-main/configs/config_southamerica_Day1Prac1.R)
+  - [config_simple.R](../ref/gen3sis_yomos_2024-main/config/config_simple.R)

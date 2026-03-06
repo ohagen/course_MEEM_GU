@@ -1,0 +1,6 @@
+.quarto-title-banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url("images/logo_MEEM_CCUBD.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

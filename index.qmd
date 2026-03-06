@@ -1,0 +1,56 @@
+---
+title: "Mechanistic Eco-Evolutionary Modelling"
+subtitle: "A Critical Computational Approach to Understanding Biodiversity Dynamics (16-18 March SoSe 2026)"
+title-block-banner: true
+---
+
+```{=html}
+<style>
+.intro-logo {
+    float: left;
+    width: 34%;
+    max-width: 360px;
+    margin: 0 1.25rem 0.75rem 0;
+}
+
+.intro-clear {
+    clear: both;
+}
+</style>
+```
+
+![](assets/images/logo_MEEM_CCUBD.png){.intro-logo}
+
+Understanding how biodiversity emerges, persists, and erodes across spatial and temporal scales is fundamental to predicting ecological responses to global change. Recent advances in computational modelling and paleoenvironmental reconstruction have opened new avenues to explore these processes in silico, providing powerful tools for linking ecological, evolutionary, and geological theories and data with long-term societal implications.
+
+This block seminar focuses on mechanistic eco-evolutionary models using the `gen3sis` simulation engine, offering insights into biodiversity dynamics by critically formalizing and testing hypotheses and theories from multiple natural science disciplines. Mechanistic models are not just tools to fill knowledge gaps; they are also instruments to make epistemological uncertainty explicit (i.e., by testing what assumptions must hold for a given outcome to emerge), enhancing intuition about interacting processes acting across deep and shallow time.
+
+Participants engage in critical reflection on the implications and limitations of current theoretical knowledge, computational models, and potential human influences on ecological and evolutionary processes.
+
+::: intro-clear
+:::
+
+## Learning outcomes {.unnumbered}
+
+Participants will:
+
+-   Gain foundational, historical, and critical understanding of mechanistic eco-evolutionary modelling.
+-   Acquire hands-on skills to develop landscapes and eco-evolutionary rules/models within the `gen3sis` framework.
+-   Learn to design, execute, and interpret computational experiments to test hypotheses related to biodiversity emergence, maintenance, and erosion.
+-   Critically evaluate the strengths and limitations of computational models.
+-   Foster interdisciplinary thinking to formalize ecological and evolutionary theories and integrate them with other disciplines and real-world questions.
+
+## Recommended literature for preparation {.unnumbered}
+
+-   Hagen, O. (2023). [Coupling eco-evolutionary mechanisms with deep-time environmental dynamics to understand biodiversity patterns](https://doi.org/10.1111/ecog.06132). *Ecography*.
+-   Hagen, O., Flueck, B., Fopp, F., Cabral, J. S., Hartig, F., Pontarp, M., Rangel, T. F., & Pellissier, L. (2021). [gen3sis: A general engine for eco-evolutionary simulations of the processes that shape Earth’s biodiversity](https://doi.org/10.1371/journal.pbio.3001340). *PLOS Biology*.
+
+## Academic achievement {.unnumbered}
+
+Active participation and independent thinking are expected. Evaluation is split into three equal parts:
+
+-   Discussions and critical engagement: **1/3**
+-   Completion of practical assignments: **1/3**
+-   Group flash presentations of findings: **1/3**
+
+See the dedicated day pages for the full teaching sequence and [materials.qmd](materials.qmd) for all linked material from both reference courses.

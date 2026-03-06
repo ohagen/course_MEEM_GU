@@ -1,0 +1,26 @@
+---
+title: "Day 2: Patterns, processes, and predictions"
+---
+
+## Program {.unnumbered}
+
+- **Lecture:** Thematic case study presentation and hypothesis definition.
+- **Break**
+- **Practical:** Designing simulation experiments: hypotheses as counterfactuals.
+- **Lunch Break**
+- **Practical:** Analysing biodiversity outputs from `gen3sis` simulations.
+- **Break**
+- **Practical:** Designing simulation experiments: hypotheses as counterfactuals.
+
+## Core material used {.unnumbered}
+
+- CBA output and landscape work:
+  - [Day2_Prac4_outputs.qmd](../ref/CBAGen3sis-main/Day2_Prac4_outputs.qmd)
+  - [Day2_Prac5_landscapes.qmd](../ref/CBAGen3sis-main/Day2_Prac5_landscapes.qmd)
+  - [Day3_landscape_development.qmd](../ref/CBAGen3sis-main/Day3_landscape_development.qmd)
+- YoMos workshop methods:
+  - [gen3sis_workshop.qmd](../ref/gen3sis_yomos_2024-main/gen3sis_workshop.qmd) (Sections 3–4)
+- Day 2 configuration references:
+  - [config_islands_simple_Day2Prac5.R](../ref/CBAGen3sis-main/configs/config_islands_simple_Day2Prac5.R)
+  - [config_M0_TH.R](../ref/gen3sis_yomos_2024-main/config/config_M0_TH.R)
+  - [config_M2_TH.R](../ref/gen3sis_yomos_2024-main/config/config_M2_TH.R)
