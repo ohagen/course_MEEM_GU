@@ -55,3 +55,6 @@ rsconnect/
 /_site/
 /html/
 /compiled/
+
+/.quarto/
+**/*.quarto_ipynb
