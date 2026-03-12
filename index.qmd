@@ -1,5 +1,5 @@
 ---
-title: "Mechanistic Eco-Evolutionary Modelling"
+title: "About this course"
 subtitle: "A Critical Computational Approach to Understanding Biodiversity Dynamics (16-18 March SoSe 2026)"
 title-block-banner: true
 ---
@@ -27,6 +27,12 @@ This block seminar focuses on mechanistic eco-evolutionary models using the `gen
 
 Participants engage in critical reflection on the implications and limitations of current theoretical knowledge, computational models, and potential human influences on ecological and evolutionary processes.
 
+## Objectives
+
+This course is designed to provide the basics on how to use gen3sis for various research questions, which is crucial for defining models within the modeling cycle. The course will briefly introduce the philosophical context of natural science and the principles of mechanistic models. 
+Participants will engage in hands-on exercises, applying gen3sis to explore hypotheses concerning the genesis and maintenance of biodiversity within the R programming environment. Practical experiences will equip attendees with the necessary background to craft their own biodiversity models. 
+The course mainly uses simulated data, leading to valuable insights about the interplay between processes and patterns in biodiversity research.
+
 ::: intro-clear
 :::
 
@@ -47,10 +53,14 @@ Participants will:
 
 ## Day overview and links {.unnumbered}
 
--   [Day 1](day1.qmd): Foundations of mechanistic simulation, including setup, landscapes, and eco-evolutionary rule design.
--   [Day 2](day2.qmd): Hypothesis-driven experiments, counterfactual design, and analysis of biodiversity simulation outputs.
--   [Day 3](day3.qmd): Advanced experiments, sensitivity analyses, critical synthesis, and flash presentations.
--   [Complete materials map](materials.qmd): All linked source material from both reference courses.
+-   [Setup and the Basics](setup.qmd): Core setup, first simulation workflow, and troubleshooting foundations.
+-   [Repeat for real](repeat_real.qmd): Practical with a more realistic South America paleo-landscape and discussion of temporal resolution.
+-   [🏝️ Practical Island Hopping](prac_islands.qmd): Ground-up implementation of a full simulation workflow on an island system.
+-   [🌋 Practical Creating Worlds](prac_landscapes.qmd): Landscape-focused practical with environment construction and resolution-aware design choices.
+-   [🖥️ Practical Emergent Silicodiversity](prac_outputs.qmd): Output exploration, summary interpretation, and custom diagnostics for biodiversity patterns.
+-   [🎲 Unified Neutral Theory of Biodiversity and Biogeography](prac_untbb.qmd): Integrated practical for custom hypothesis testing and model adaptation.
+-   [Important considerations](considerations.qmd): Caveats, assumptions, and data constraints for critical interpretation.
+-   [Further Resources](resources.qmd): Additional package docs, vignettes, prior workshops, and key reading links.
 
 
 ## Academic achievement {.unnumbered}

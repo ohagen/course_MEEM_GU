@@ -48,6 +48,8 @@ rsconnect/
 
 # Local reference folder
 /ref/
+/removeQ/
+/.r_libs/
 
 # Rendered website output (comment out this block when you are ready to publish)
 # NOTE: Keep these lines active during development to avoid committing rendered files.
@@ -56,5 +58,54 @@ rsconnect/
 /html/
 /compiled/
 
+# Simulation outputs: ignore everything by default, keep only tutorial examples.
+/output/**
+!/output/
+!/output/config_simple/
+!/output/config_simple/species/
+!/output/config_simple/landscapes/
+!/output/config_M2_TH_mod/
+!/output/SouthAmerica/
+!/output/SouthAmerica/config_southamerica_Day1Prac1/
+!/output/islands/
+!/output/islands/config_islands_simple_Day1Prac3_M1/
+!/output/islands/config_islands_simple_Day1Prac3_M1/species/
+!/output/islands/config_islands_simple_Day1Prac3_M1/landscapes/
+!/output/islands/config_islands_simple_Day1Prac3_M2/
+!/output/islands/config_islands_simple_Day1Prac3_M3/
+!/output/islands/config_islands_simple_Day1Prac3_M3/species/
+
+# Setup chapter examples
+!/output/config_simple/sgen3sis.rds
+!/output/config_simple/phy.nex
+!/output/config_simple/species/species_t_32.rds
+!/output/config_simple/landscapes/landscape_t_32.rds
+!/output/config_M2_TH_mod/sgen3sis.rds
+!/output/config_M2_TH_mod/phy.nex
+
+# Repeat-real chapter example
+!/output/SouthAmerica/config_southamerica_Day1Prac1/phy.nex
+
+# Islands practical examples
+!/output/islands/config_islands_simple_Day1Prac3_M1/sgen3sis.rds
+!/output/islands/config_islands_simple_Day1Prac3_M1/phy.nex
+!/output/islands/config_islands_simple_Day1Prac3_M1/species/species_t_0.rds
+!/output/islands/config_islands_simple_Day1Prac3_M1/species/species_t_12.rds
+!/output/islands/config_islands_simple_Day1Prac3_M1/species/species_t_32.rds
+!/output/islands/config_islands_simple_Day1Prac3_M1/landscapes/landscape_t_0.rds
+!/output/islands/config_islands_simple_Day1Prac3_M1/landscapes/landscape_t_12.rds
+!/output/islands/config_islands_simple_Day1Prac3_M1/landscapes/landscape_t_32.rds
+!/output/islands/config_islands_simple_Day1Prac3_M2/sgen3sis.rds
+!/output/islands/config_islands_simple_Day1Prac3_M3/sgen3sis.rds
+!/output/islands/config_islands_simple_Day1Prac3_M3/phy.nex
+!/output/islands/config_islands_simple_Day1Prac3_M3/species/species_t_0.rds
+
 /.quarto/
 **/*.quarto_ipynb
+
+# Large derived distance files for landscape examples
+/data/landscapes/hard_to_climb_easy_to_roll/distances_full/
+/data/landscapes/hard_to_climb_easy_to_roll/distances_local/
+
+# Landscape dataset to keep local only
+/data/landscapes/six_seasonal_islands/

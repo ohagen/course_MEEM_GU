@@ -1,6 +1,12 @@
 project:
   type: book
   output-dir: docs
+  render:
+    - "*.qmd"
+    - "!removeQ/**"
+  resources:
+    - assets/materials/**
+    - assets/images/**
 
 book:
   title: "Mechanistic Eco-Evolutionary Modelling"
@@ -9,10 +15,14 @@ book:
   date: "1 March 2026"
   chapters:
     - index.qmd
-    - day1.qmd
-    - day2.qmd
-    - day3.qmd
-    - materials.qmd
+    - setup.qmd
+    - repeat_real.qmd
+    - prac_islands.qmd
+    - prac_landscapes.qmd
+    - prac_outputs.qmd
+    - prac_untbb.qmd
+    - considerations.qmd
+    - resources.qmd
 
 format:
   html:

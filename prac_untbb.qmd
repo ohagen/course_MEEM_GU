@@ -1,0 +1,284 @@
+---
+title: "🎲 Unified Neutral Theory of Biodiversity and Biogeography"
+execute: 
+  eval: FALSE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+The Unified Neutral Theory of Biodiversity and Biogeography (often shortened to UNTB, sometimes written UNTBB) is a deliberately blunt instrument: it explains common biodiversity patterns by assuming **ecological equivalence** among individuals of different species, so that community dynamics are dominated by stochastic birth, death, dispersal and speciation. It is not “true” in the literal sense (species differ), but it is useful as a **quantitative null model** and as a way to ask: *how much pattern can drift produce before we need niches*?
+
+::: callout-note
+## Suggested reading on the Unified Neutral Theory of Biodiversity and Biogeography
+
+Read these three references bellow before we start implementing **about 1 hour** and at least: one [additional readings](#additional-reading) and one [critical extension](#additional-critical) or something else that you find yourself
+
+### Core entry reading
+
+- **20 min** [Neutral Theory of Species Diversity (Scitable)](https://www.nature.com/scitable/knowledge/library/neutral-theory-of-species-diversity-13259703/) 
+Introduction to the Unified Neutral Theory of Biodiversity and Biogeography, explaining its core assumptions and why it became so influential.
+- **25 min** [Unified neutral theory of biodiversity and biogeography (Scholarpedia)](http://www.scholarpedia.org/article/Unified_neutral_theory_of_biodiversity_and_biogeography)
+A more formal and detailed overview of the theory, including metacommunities, local communities, dispersal limitation, speciation, and expected biodiversity patterns.
+- **25 min** [The unified neutral theory of biodiversity and biogeography at age ten](https://pubmed.ncbi.nlm.nih.gov/21561679/)
+A reflective review of the first decade of neutral theory, discussing where it succeeded, where it was criticized, and how it shaped later biodiversity research.
+
+### Additional reading {#additional-reading}
+
+- **20 min**  [Neutral Theory of Species Diversity (Scitable, Nature Education)](https://www.nature.com/scitable/knowledge/library/neutral-theory-of-species-diversity-13259703/)  
+A clear introductory overview of neutral theory, its assumptions, and why it became influential. Good as the first stop before students dive into the more formal material. 
+- **30 min**  [Unified neutral theory of biodiversity and biogeography (Scholarpedia)](http://www.scholarpedia.org/article/Unified_neutral_theory_of_biodiversity_and_biogeography)  
+A more technical and conceptually richer explanation. Useful for understanding the metacommunity, local community, dispersal limitation, speciation, and species abundance distributions under UNTB. 
+- **25 min**  [The unified neutral theory of biodiversity and biogeography at age ten (Rosindell, Hubbell, Etienne 2011)](https://pubmed.ncbi.nlm.nih.gov/21561679/)  
+A strong review of what happened after the original theory landed: what held up, what was criticized, and how the debate matured. Very useful for students who should see that neutral theory is not just a straw man, but also not a magic trick. 
+- **30 min**  [Neutral theory and the species abundance distribution (Matthews and Whittaker 2014)](https://pubmed.ncbi.nlm.nih.gov/25360266/)  
+Helpful for connecting neutral theory to one of the main empirical patterns it tries to explain: species abundance distributions. Good for students thinking about pattern versus process. 
+
+### Additional critical extension {#additional-critical}
+
+- **25 min** [Empirical evaluation of neutral theory (McGill, Maurer, Weiser 2006)](https://pubmed.ncbi.nlm.nih.gov/16869415/)  
+A useful critique. Good for showing that fitting broad biodiversity patterns does not automatically mean the underlying mechanism is correct. 
+- **25 min** [Neutral theory and the evolution of ecological equivalence (Hubbell 2006)](https://pubmed.ncbi.nlm.nih.gov/16869413/)  
+A concise piece from Hubbell that helps students understand the logic behind ecological equivalence and the broader neutral argument. 
+
+:::
+
+## Core idea {.unnumbered}
+
+Neutral theory’s defining assumption is **per capita symmetry**: within a trophic guild (e.g. trees in a forest), individuals are effectively interchangeable in their probabilities of birth, death, dispersal and speciation, so species identity does not causally matter for demographic fate.
+
+The “unified” part is that this symmetry is placed in a **biogeographic context** by linking (i) a large *metacommunity* that supplies potential immigrants and in which speciation balances extinction, to (ii) local communities that are demographic “samples” influenced by immigration and drift.
+
+If you only remember one slogan, make it this: **neutral drift plus dispersal limitation plus speciation can generate many rare species and a few common ones, without invoking niche differences**.
+
+## Mechanics and parameters {.unnumbered}
+
+A standard way to describe the model is as a **zero-sum (saturated) stochastic replacement process**: local communities have a fixed number of individuals, usually written `J`. At each event, one individual dies and is replaced either by a locally produced recruit or by an immigrant from the metacommunity (probability `m`). In the metacommunity, the analogous replacement includes speciation, often idealised as “point mutation”: with probability `ν` a new lineage appears.
+
+Three parameters show up everywhere:
+
+- `J`: local community size (number of individuals).
+- `m`: immigration probability from metacommunity into the local community.
+- `θ` (theta): the fundamental biodiversity number capturing metacommunity diversity at equilibrium and tied to speciation and metacommunity size. In many presentations it scales roughly with metacommunity size times speciation rate (the precise constant depends on model details).
+
+That trio is highlighted very explicitly in a recent open-access philosophical analysis of neutral theory: the equilibrium distribution of the local community (in the spatially implicit formulation) depends on `J`, `m`, and `θ`, and results in the **zero-sum multinomial** as a characteristic species abundance distribution.
+
+A practical interpretation for modelling students: **neutral theory is a constraint-first model**. It says: keep total individuals approximately constant (zero-sum), allow stochastic turnover, and see what patterns are forced by those constraints before inventing more mechanisms.
+
+## What it predicts and why those predictions matter {.unnumbered}
+
+Neutral theory’s strongest value is not that it fits one curve. Its real value is that it generates a family of linked predictions across patterns.
+
+Species abundance distributions (SADs): A long tail of rare species is a robust outcome of drift with speciation and immigration, with the zero-sum multinomial often used as the canonical form for the local SAD under the spatially implicit model.
+
+Species–area relationships (SARs): Under neutral assumptions, expected richness increases with community size (and thus with sampled area if density is roughly constant), with the metacommunity SAD and SAR depending primarily on `θ`, while local patterns depend on both `θ` and migration.
+
+Beta diversity and distance decay: Once dispersal is limited, communities farther apart tend to share fewer species. This is one of the central predictions reviewers and testers focus on.
+
+Null-model utility: A major justification, including by proponents, is that neutrality provides quantitative baselines for testing how much extra explanatory power is gained when adding niches and trait differences.
+
+::: callout-tip
+Hubbell’s own framing (and later syntheses) treat neutrality as a way to separate what is due to *species similarities* from what is due to *species differences*.
+:::
+
+## Critiques and extensions you should not ignore {.unnumbered}
+
+Neutral theory is controversial because its core assumption fails literally: species differ, and those differences can matter.
+
+A broad empirical synthesis argued that most published tests fail to support neutral theory under robust testing, and that a priori parameterisation is difficult, even if some patterns can be matched by curve-fitting.
+
+At the same time, it is also well established that **non-neutral mechanisms can generate SADs that look neutral**, which makes “fits the SAD” a weak test by itself. This is one reason neutrality remains pedagogically useful: it forces you to design stronger tests than pattern matching.
+
+Extensions exist precisely because the simplest assumptions are too crude. Few examples are:
+
+- Alternative speciation modes (beyond point mutation).  
+- “Nearly neutral” and hybrid niche–neutral framings relax strict equivalence but keep the stochastic backbone.
+
+Bottom line: neutrality is best treated as **an explicit baseline**. When your model deviates from it, you should be able to say *which assumption you broke and what new prediction that creates*.
+
+## Interpreting UNTB inside gen3sis {.unnumbered}
+
+### The key match
+
+gen3sis is built to simulate biodiversity dynamics by executing modular functions each time step. The package is explicitly designed so you can disable or simplify functions to create baseline models, including ecologically neutral ones.
+
+That maps cleanly onto the neutral “ingredients”:
+
+- **Zero-sum / saturation**: implement in `ecology` by enforcing a carrying capacity `k` per site (a fixed `J` analogue). gen3sis explicitly uses ecology to update abundance and allows carrying-capacity constraints that randomly reduce abundances until `k` is reached.
+- **Ecological drift**: also in `ecology`, by introducing stochasticity in who loses or gains individuals under saturation. (In neutral theory: births and deaths drive random walks in abundance.)
+- **Dispersal limitation**: implement via `get_dispersal_values`, which gen3sis uses for colonisation and for defining geographic clustering.
+- **Speciation**: here gen3sis is *not* the textbook Hubbell “point mutation” model. The default engine’s speciation mechanism is allopatric-like: divergence accumulates between geographically isolated clusters until a threshold is reached, at which point a lineage split occurs. 
+
+So, the honest statement is:
+
+::: callout-warning
+A pure Hubbell-style spatially implicit UNTB (Moran point mutation speciation in a panmictic metacommunity) cannot be reproduced perfectly by *only* editing a standard gen3sis config, because gen3sis speciation is built around geographic isolation and divergence thresholds. What you *can* do is implement a **neutral ecology and dispersal model**, and then treat gen3sis speciation as a **geographic speciation analogue** that maintains regional diversity. 
+:::
+
+### Time-to-speciation becomes a calibratable knob
+
+gen3sis speciation is controlled by a divergence threshold and a divergence accumulation factor. In the official config vignette, the logic is made explicit: speciation occurs after a given number of isolated time steps when the divergence crosses the threshold.
+
+That gives you a clean teaching lever:
+
+- If divergence increases by ~1 per time step during isolation, then expected isolation time to speciation is roughly `divergence_threshold` time steps (in that simplified view). 
+- You can therefore tune speciation tempo to approximate “higher ν” (faster new species input) versus “lower ν” (slower). This is not the same mechanism as Hubbell’s mutation, but it plays the same *role* at the metacommunity level: maintaining a supply of species against extinction.
+
+## Practical: building a UNTBB-style config for the islands {.unnumbered}
+
+This section is written to mirror the workflow students already used: take an existing islands config, duplicate it, then make surgical edits.
+
+### The minimal edit set
+
+Start from the config you already used on the islands (e.g. `configs/config_islands_simple_Day1Prac3_M?.R`, as referenced in the Sandbox instructions) and save a copy with a new name, for example:
+
+- `configs/config_islands_simple_UNTB.R`
+
+Then make these conceptual edits:
+
+1) **Turn off niche differences** in `ecology`: do not use temperature traits, aridity traits, or competitive asymmetries to decide survival. All species should be treated symmetrically.
+
+2) **Enforce saturation** with a constant carrying capacity `k` per site, and implement drift by randomly allocating losses (and, if you choose, gains) among present species. gen3sis explicitly supports carrying capacity as a constraint in ecology, including random reductions until `k` is reached. 
+
+3) **Keep dispersal species-symmetric**: use one dispersal kernel for all species, controlled by the same parameters.
+
+4) **Disable trait evolution**: your neutral model should not require adaptive evolution. In gen3sis, the mutation/evolution step can be turned off (or replaced with a “none” mode), so traits do not change.
+
+5) **Handle speciation honestly**: either leave gen3sis allopatric speciation on as a regional diversity source, or (for short runs) reduce speciation and treat the system as “ecological drift plus dispersal” with a fixed species pool.
+
+### A worked config snippet for a neutral ecology core
+
+Below is a compact pattern you can graft into your islands config. It is not a full config file: it is the part students should paste into the **Ecology** section and the few upstream settings that must match it.
+
+Key design choices:
+
+- Abundances are treated as **individual counts** (integers).
+- A site has a **hard cap** `k_site`.
+- If total abundance exceeds `k_site`, individuals are removed at random across extant species until the cap is met.
+- No environmental filtering, no trait-based survival.
+
+```{r, eval=FALSE}
+########################
+### CHANGED: General ###
+########################
+
+# CHANGED: remove niche traits. Keep only dispersal (often implicitly present).
+trait_names = c("dispersal")
+
+####################
+### CHANGED: Init ###
+####################
+
+# CHANGED: immigrants arrive as singletons (fits neutral intuition)
+initial_abundance = 1
+
+#######################
+### CHANGED: Mutation ###
+#######################
+
+# CHANGED: disable evolution / mutation (name differs by version)
+# Option A: if your config has apply_evolution
+apply_evolution <- function(species, cluster_indices, landscape, config) {
+  return(species[["traits"]])
+}
+
+###################
+### CHANGED: Ecology ###
+###################
+
+# CHANGED: neutral, zero-sum-ish ecology
+apply_ecology <- function(abundance, traits, local_environment, config) {
+
+  # Hard cap per site, i.e. local J analogue
+  k_site <- 200  # KNOB
+
+  # ensure non-negative integer abundances
+  abundance[is.na(abundance)] <- 0
+  abundance[abundance < 0] <- 0
+  abundance <- as.integer(round(abundance))
+
+  total <- sum(abundance)
+
+  # If nobody is here, nothing to do
+  if(total == 0) return(abundance)
+
+  # If total exceeds k_site: remove individuals randomly until capacity is met
+  if(total > k_site) {
+    while(total > k_site) {
+      alive <- which(abundance > 0)
+      # pick a species proportional to its abundance (neutral death lottery)
+      pick <- sample(alive, size = 1, prob = abundance[alive])
+      abundance[pick] <- abundance[pick] - 1L
+      total <- total - 1L
+    }
+  }
+
+  # Optional: if total is below k_site, you can choose to fill vacancies.
+  # Leaving it under-filled makes neutrality less "zero-sum" and more "open".
+  # Uncomment to enforce strict saturation by local recruitment:
+  #
+  # if(total < k_site) {
+  #   add <- k_site - total
+  #   alive <- which(abundance > 0)
+  #   if(length(alive) > 0) {
+  #     recruits <- sample(alive, size = add, replace = TRUE, prob = abundance[alive])
+  #     for(i in recruits) abundance[i] <- abundance[i] + 1L
+  #   }
+  # }
+
+  return(abundance)
+}
+```
+
+Why this is a reasonable “UNTB interpretation” in gen3sis:
+
+- The saturation constraint implements the same *conservation-of-individuals* spirit as the zero-sum assumption emphasised in many neutral presentations.
+- Random removal across co-occurring species implements ecological drift under equivalence.
+- Setting `initial_abundance = 1` makes colonisation functionally resemble the arrival of singleton immigrants.
+
+### What students should vary and what they should predict
+
+Have each student group choose **one knob** and make predictions *before* running.
+
+Recommended knobs:
+
+- `k_site`: larger `k_site` should increase local richness and slow drift, because demographic stochasticity scales with community size. Expect more persistent rare species when `k_site` is large. 
+- Dispersal scale in `get_dispersal_values`: increasing dispersal should homogenise communities (lower beta diversity), while decreasing dispersal should increase spatial turnover and endemism.
+- `divergence_threshold`: lowering it should generate more frequent speciation events (more regional species input), raising it should do the opposite.
+
+Concrete, testable predictions to demand:
+
+- If you shrink island area through time (sea-level rise in the islands landscape), total habitat cells drop, so metacommunity size and effective `J` drop. Neutral theory expects richness to drop with community size, and drift to strengthen as `J` shrinks.
+- If you keep everything neutral and remove environmental filtering, richness patterns should align much more with **space and connectivity** than with temperature gradients.
+
+### What to report
+
+Students should report results as a short “model card”:
+
+- Their modified config: which parameters changed, and why.
+- A figure of richness through time and final richness map.
+- One SAD plot for a chosen snapshot (local site or whole landscape pooled).
+- One beta-diversity or distance-decay plot across sites or islands.
+
+If they claim “neutrality works”, require them to specify: which pattern, at what scale, and what alternative mechanisms were ruled out. This is exactly the caution raised in classic teaching texts: patterns alone rarely identify process.
+
+## References and further reading {.unnumbered}
+
+- Hubbell, S. P. 2001. [*The Unified Neutral Theory of Biodiversity and Biogeography*](https://www.jstor.org/stable/j.ctt7rj8w). Princeton University Press. The foundational book that introduced UNTB in its full biogeographic form and formalized the role of dispersal, speciation, drift, and the biodiversity parameter `θ`. :contentReference[oaicite:0]{index=0}
+
+- Duguid, C. 2025. [Developing the structure of laws in biology](https://link.springer.com/article/10.1007/s10539-025-09979-z). *Biology & Philosophy*. Useful for a conceptual reading of neutral theory as a constraint-based framework, with a very clear summary of the local community parameters `J`, `m`, and `θ`, and the equilibrium interpretation you flagged. :contentReference[oaicite:1]{index=1}
+
+- Etienne, R. S., Alonso, D., and McKane, A. J. 2010. [The neutral theory of biodiversity with random fission speciation](https://link.springer.com/article/10.1007/s12080-010-0076-y). *Theoretical Ecology* 3: 87 to 109. Useful for students to see that some strong predictions depend not only on neutrality, but also on additional model assumptions such as point-mutation speciation and zero-sum structure. :contentReference[oaicite:2]{index=2}
+
+- He, F. and Hu, X. S. On the interpretation of the fundamental biodiversity number `θ` and its links to diversity measures under neutral theory. Good background for explaining what `θ` is doing mathematically and biologically when students modify metacommunity diversity assumptions.
+
+- Hagen, O. et al. 2021. [*gen3sis: A general engine for eco-evolutionary simulations of the processes that shape Earth’s biodiversity*](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3001340). *PLoS Biology* 19(7): e3001340. Essential for translating UNTB ideas into `gen3sis` logic, i.e. which assumptions belong in landscape, ecology, dispersal, speciation, and observer functions.
+
+- project-gen3sis. [R-package repository](https://github.com/project-gen3sis/R-package). Useful for checking the actual config structure, function signatures, and implementation points where a neutral-style or near-neutral experiment can be encoded.
+
+- Volkov, I., Banavar, J. R., Hubbell, S. P., and Maritan, A. 2003. A neutral-theory based model gives a unified description of species abundance and species-area relationships. Useful if you want one classic empirical-pattern paper beyond the basic review stack.
+
+- Sloan, W. T. et al. 2006. Quantifying the roles of immigration and chance in shaping prokaryote community structure. A nice example showing how neutral-style reasoning was exported beyond plant communities into microbial ecology.
+
+- Muneepeerakul, R. et al. 2008. Neutral metacommunity models predict fish diversity patterns in river networks. Useful when discussing how dispersal structure alone can generate non-trivial spatial biodiversity patterns under neutral assumptions. :contentReference[oaicite:3]{index=3}

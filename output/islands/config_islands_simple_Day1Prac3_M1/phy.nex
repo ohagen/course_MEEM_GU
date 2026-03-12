@@ -1,0 +1,5 @@
+#NEXUS
+begin trees;
+Tree tree = (((((species1:9,species8:9):22,(species5:9,species9:9):22):19,species4:50):0,species3:50):0,((species2:7,species10:7):24,(species6:11,species7:11):20):19):0;
+end;
+[!Tree generated with the gen3sis R package, following convention of TreeSim and TreeSimGM r-packages]
