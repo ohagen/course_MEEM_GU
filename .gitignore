@@ -51,6 +51,15 @@ rsconnect/
 /removeQ/
 /.r_libs/
 
+# GitHub Pages toggle guide
+# DEV MODE (do not commit rendered site):
+#   1) Uncomment /docs/
+#   2) quarto render
+# PUBLISH MODE (commit rendered site for Pages):
+#   1) Keep /docs/ commented out
+#   2) quarto render
+#   3) git add . ; git commit -m "Publish site update" ; git push
+
 # Rendered website output (comment out docs ignore when publishing with GitHub Pages)
 # /docs/
 /_site/
