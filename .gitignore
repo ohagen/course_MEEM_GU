@@ -51,9 +51,8 @@ rsconnect/
 /removeQ/
 /.r_libs/
 
-# Rendered website output (comment out this block when you are ready to publish)
-# NOTE: Keep these lines active during development to avoid committing rendered files.
-/docs/
+# Rendered website output (comment out docs ignore when publishing with GitHub Pages)
+# /docs/
 /_site/
 /html/
 /compiled/

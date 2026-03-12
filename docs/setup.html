@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Setup and the Basics – Mechanistic Eco-Evolutionary Modelling</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./repeat_real.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html"><span class="chapter-title">Setup and the Basics</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Mechanistic Eco-Evolutionary Modelling</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">About this course</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./setup.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Setup and the Basics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./repeat_real.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Repeat for real</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prac_islands.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🏝️ Practical Island Hopping</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prac_landscapes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🌋 Practical Creating Worlds</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prac_outputs.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🖥️ Practical Emergent Silicodiversity</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prac_untbb.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">🎲 Unified Neutral Theory of Biodiversity and Biogeography</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./considerations.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Important considerations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resources.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Further Resources</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#setting-up-the-r-environment" id="toc-setting-up-the-r-environment" class="nav-link active" data-scroll-target="#setting-up-the-r-environment">1. Setting up the R environment</a></li>
+  <li><a href="#understanding-the-basics" id="toc-understanding-the-basics" class="nav-link" data-scroll-target="#understanding-the-basics">2. Understanding the basics</a>
+  <ul class="collapse">
+  <li><a href="#landscape" id="toc-landscape" class="nav-link" data-scroll-target="#landscape">2.1 Landscape</a></li>
+  <li><a href="#config" id="toc-config" class="nav-link" data-scroll-target="#config">2.2 Config</a></li>
+  </ul></li>
+  <li><a href="#run-a-basic-simulation" id="toc-run-a-basic-simulation" class="nav-link" data-scroll-target="#run-a-basic-simulation">3. Run a basic simulation</a></li>
+  <li><a href="#customize-simulations" id="toc-customize-simulations" class="nav-link" data-scroll-target="#customize-simulations">4. Customize simulations</a></li>
+  <li><a href="#troubleshoot" id="toc-troubleshoot" class="nav-link" data-scroll-target="#troubleshoot">5. Troubleshoot</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Setup and the Basics</span></h1>
+<p class="subtitle lead">Building and running custom mechanistic eco-evolutionary biodiversity models</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>First things first, let’s get you up and running with gen3sis. In this setup guide, we will:</p>
+<ol type="1">
+<li>Set up the R environment</li>
+<li>Understand the basics</li>
+<li>Run a basic simulation</li>
+<li>Customize simulations</li>
+<li>Troubleshoot</li>
+</ol>
+<section id="setting-up-the-r-environment" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-the-r-environment">1. Setting up the R environment</h2>
+<p><img src="assets/images/day1/qr-code-workshop.jpg" class="img-fluid"></p>
+<p>We’ll need the <code>gen3sis</code> R package along with configuration and landscape files from the <a href="https://github.com/ohagen/course_MEEM_SoSe26">course repository</a>. Please download the repo and create a new R script in the same directory.</p>
+<ol type="1">
+<li>Go to <a href="https://github.com/ohagen/course_MEEM_SoSe26" class="uri">https://github.com/ohagen/course_MEEM_SoSe26</a> and download the repository:</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/images/day1/github.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li><p>Put it somewhere on your machine that you can readily access</p></li>
+<li><p>Unzip the folder</p></li>
+<li><p>Open up RStudio from the .Rproj</p></li>
+<li><p>Setting the needed packages</p></li>
+</ol>
+<p>You can copy and paste code from the sections below, or use <a href="myscript.R">myscript.R</a>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to check and install packages if they are not already installed</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>load_install_pkgs <span class="ot">&lt;-</span> <span class="cf">function</span>(package_names) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (package <span class="cf">in</span> package_names) {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(package, <span class="at">character.only =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">install.packages</span>(package)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Installing"</span>, package))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">library</span>(package, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector of packages to load and install if necessary</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>packages_to_load <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"gen3sis"</span>, <span class="st">"here"</span>, <span class="st">"terra"</span>, <span class="st">"ape"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function with the vector of package names</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">load_install_pkgs</span>(packages_to_load)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># print gen3sis version</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"gen3sis version:"</span>, <span class="fu">packageVersion</span>(<span class="st">"gen3sis"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "gen3sis version: 1.6.0"</code></pre>
+</div>
+</div>
+<p>You could also install the most recent version of the package from GitHub using devtools. But hold off on this today so we’re all working with the same version.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("devtools")</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#devtools::install_github(repo = "project-gen3sis/R-package", dependencies = TRUE)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#packageVersion("gen3sis")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Landscape and configuration files are bundled in this repository under <code>data/space/</code> and <code>data/config/</code>. If you have an optional <code>distances_full</code> folder, place it inside <code>data/space/</code> alongside <code>distances_local</code> to speed up some simulations.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set path to directory containing the landscape</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>landscape_dir <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">"data/space"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># look at folder structure</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(landscape_dir)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "distances_local" "landscapes.rds" </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set path to config_file</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>config_file <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">"data/config/config_simple.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="understanding-the-basics" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-the-basics">2. Understanding the basics</h2>
+<p>Gen3sis is an engine that simulates eco-evolutionary processes at the population level. It utilizes a landscape containing environmental variables that evolve over time, alongside a configuration file housing the eco-evolutionary rules. Read more <a href="https://doi.org/10.1371/journal.pbio.3001340">here</a></p>
+<section id="landscape" class="level3">
+<h3 class="anchored" data-anchor-id="landscape">2.1 Landscape</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/ohagen/DispDiv3/raw/main/figures/AnimationS1_patch_dynamics.gif" class="img-fluid figure-img"></p>
+<figcaption>This tutorial utilizes a theoretical archipelago system. Each site 1x1 km, features temperature (i.e.&nbsp;mean, minimum and maximum temperature) and has a landscape structure that is generated by approximating topography, uplift dynamics, and lapse rate. Additionally, it incorporates global temperature and sea level changes dating back to the past 5 million years (Ma).</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load landscapes</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>lc <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(landscape_dir,<span class="st">"landscapes.rds"</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># class(lc) "list"</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get names of landscape variables</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lc)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "elevation" "mean_temp" "min_temp"  "max_temp"  "patch"    </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get first time step</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>first_step_pos <span class="ot">&lt;-</span> <span class="fu">ncol</span>(lc<span class="sc">$</span>mean_temp)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># get first 10 sites of mean temperature for the 2 last time steps and the first (oldest) time step</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>lc<span class="sc">$</span>mean_temp[<span class="dv">100</span><span class="sc">:</span><span class="dv">110</span>, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, first_step_pos)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       x    y        0        1      500
+100 39.5 58.5       NA       NA       NA
+101 40.5 58.5       NA       NA       NA
+102 41.5 58.5       NA       NA       NA
+103 42.5 58.5       NA       NA       NA
+104 43.5 58.5       NA       NA       NA
+105 44.5 58.5       NA       NA       NA
+106 45.5 58.5       NA       NA       NA
+107 46.5 58.5       NA       NA       NA
+108 47.5 58.5       NA 23.82152       NA
+109 48.5 58.5       NA 23.56207       NA
+110 49.5 58.5 24.89379 23.39746 24.85717</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot mean_temp for first and last time step</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(terra<span class="sc">::</span><span class="fu">rast</span>(lc<span class="sc">$</span>mean_temp[ ,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, first_step_pos)]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="setup_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div style="background-color: lightgreen; padding: 1px;">
+<p>🏋💻 <strong>Exercise</strong> [max 10 min] Create a way to visualize the last 100 time steps of this gen3sis input. If possible think of abstracting for any x,y,z1,z2,z3… temporal data-frame. If possible, try to make a function.</p>
+<p><strong>Answer:</strong></p>
+<details>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># solution 1</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (ti <span class="cf">in</span> <span class="dv">100</span><span class="sc">:</span><span class="dv">0</span>) {</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  ri <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(lc<span class="sc">$</span>elevation[,<span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="fu">as.character</span>(ti))], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(ri, <span class="at">main=</span><span class="fu">paste</span>(ti<span class="sc">/</span><span class="dv">100</span>, <span class="st">"Ma"</span>)) <span class="co"># divide by 100 to get Ma since 1 time-step =10 kyr</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="fl">0.1</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># solution 2</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># define animation function</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plot_landenv <span class="ot">&lt;-</span>  <span class="cf">function</span>(df, <span class="at">times=</span><span class="dv">100</span><span class="sc">:</span><span class="dv">0</span>, <span class="at">reverse=</span>F, <span class="at">speed=</span><span class="fl">0.1</span>){</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># df is a data frame with x, y coordinates and time steps as columns with environmental variables</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># reverse is a boolean. Reverse the order of time steps?</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># times is either a vector of time steps or a character "all"</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># speed in seconds</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#df &lt;- lc$temp</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (times[<span class="dv">1</span>]<span class="sc">==</span><span class="st">"all"</span>){</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>   times <span class="ot">&lt;-</span> <span class="fu">names</span>(df)[<span class="sc">!</span><span class="fu">names</span>(df)<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)] </span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (reverse){</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    times <span class="ot">&lt;-</span> <span class="fu">rev</span>(times)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (ti <span class="cf">in</span> times){</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    ri <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(df[,<span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, ti)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(ri, <span class="at">main=</span><span class="fu">paste</span>(<span class="fu">as.numeric</span>(ti)<span class="sc">/</span><span class="dv">100</span>, <span class="st">"Ma"</span>))</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(speed)</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="co"># call animation function</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_landenv</span>(lc<span class="sc">$</span>elevation, <span class="at">times=</span><span class="fu">c</span>(<span class="dv">100</span><span class="sc">:</span><span class="dv">0</span>), <span class="at">speed=</span><span class="fl">0.1</span>)</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="co"># example of plotting entire time series</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="co"># plot_landenv(lc$min_temp, times="all", reverse=T, speed=0.03)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</details>
+</div>
+</section>
+<section id="config" class="level3">
+<h3 class="anchored" data-anchor-id="config">2.2 Config</h3>
+<p>Open this config file in Rstudio or any text editor to see the rules that will be applied to the landscape.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load config</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cf <span class="ot">&lt;-</span> <span class="fu">create_input_config</span>(<span class="at">config_file =</span> <span class="fu">here</span>(<span class="st">"data/config/config_simple.R"</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># list all main elements of the config file</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cf<span class="sc">$</span>gen3sis)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "general"        "initialization" "dispersal"      "speciation"    
+[5] "mutation"       "ecology"       </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list all elements of the general section, i.e. the main settings and not so much on the eco-evolutionary processes</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cf<span class="sc">$</span>gen3sis<span class="sc">$</span>general)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "random_seed"                      "start_time"                      
+[3] "end_time"                         "max_number_of_species"           
+[5] "max_number_of_coexisting_species" "end_of_timestep_observer"        
+[7] "trait_names"                      "environmental_ranges"            
+[9] "verbose"                         </code></pre>
+</div>
+</div>
+<div style="background-color: lightgreen; padding: 1px;">
+<p>🏋💻 <strong>Exercise</strong> [max 10 min] Open the config file config_simple and go though the eco-evolutionary rules that will be applied to the landscape.</p>
+<p><strong>Answer:</strong></p>
+<details>
+<p><strong>Settings</strong></p>
+<p>We start our simulation at the latest avaiable time, i.e.&nbsp;5Ma, which corresponds to time step 500 since 1 time-step = 10 kyr. We end it a the latest available time-step. Sometimes, simulations can go forever, to avoid this we limit the maximum total number of species alive in a simulation to 50000 with max_number_of_species and the maximum number of species within one site to 20000 with max_number_of_coexisting_species. This stops and flags simulations that generate too many species (time constrain). We define which traits we will consider in our simulation with traits_names, in our example, species have a dispersal ability a optimum temperature and a temperature width trait.</p>
+<p><strong>Observer</strong></p>
+<p>The observer function saves and plot changes (real-time during model execution) over time in the conditions of the virtual world (biotic and abiotic) by saving custom information at designated time steps.</p>
+<p><strong>Initialization</strong></p>
+<p>The create_ancestor_species function creates the first specie(s) in the simulation. In this case, we create one species spread across all avaiable sites with low dispersal ability, optimum temperature at 20 degrees C and a temperature width (+-1).</p>
+<p><strong> Dispersal </strong></p>
+<p>The dispersal function iterates over all species populations and determines the connectivity between sites, crucial for trait evolution and specialization, as well as the colonization of new sites. In our example, species dispersal is stochastic and uniform across all species. I.e. an exponential distribution with the rate denominator as the dispersal trait value.</p>
+<p><strong> Speciation </strong></p>
+<p>The speciation iterates over every species separately, registers populations’ geographic occupancy (species range), and determines when geographic isolation between population clusters is higher than a user-defined threshold, triggering a lineage splitting event of cladogenesis. The clustering of occupied sites is based on the species’ dispersal capacity and the landscape connection costs. Over time, disconnected clusters gradually accumulate incompatibility, analogous to genetic differentiation. When the divergence between clusters is above the speciation threshold, those clusters become two or more distinct species, and a divergence matrix reset follows. On the other hand, if geographic clusters come into secondary contact before the speciation occurs, they coalesce and incompatibilities are gradually reduced to zero.</p>
+<p><strong>Evolution</strong></p>
+<p>Think of it as trait evolution. Clustered populations (exchanging genes) have their trait homogenized. If weighted by abundance a trait of a population that is doing well in a site, as dictated by the ecology function, will contribute more to the average trait of a cluster. Populations mutate based on a normal distribution with standard deviation 0.001, possibly increasing or decreasing species optimum temperature.</p>
+<p><strong> Ecology </strong></p>
+<p>The ecology function determines the abundance or presence of the populations in occupied sites of each species. The function iterates over all occupied sites and updates the species population abundances or presences on the basis of local environmental values, updated co-occurrence patterns and species traits. In this example we use only presence/absence data, i.e.&nbsp;abundances 0 or 1.</p>
+</details>
+</div>
+</section>
+</section>
+<section id="run-a-basic-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="run-a-basic-simulation">3. Run a basic simulation</h2>
+<p>It’s time to run a simulation, we use the config_simple and archipelago system we are familiar with and set verbose to 2 in order to get more information on the progress of the simulation.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run simulation</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">run_simulation</span>(<span class="at">config =</span> <span class="fu">here</span>(<span class="st">"data/config/config_simple.R"</span>), </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">landscape =</span> <span class="fu">here</span>(<span class="st">"data/space"</span>), </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">output_directory =</span> <span class="fu">here</span>(<span class="st">"output"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>On sim we store the simulation output summary, while most of the information and large data is/should be stored in the output directory according to the observer function. If you don’t want to run the simulation, you can load the sim object from the repo.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sim_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">"output/config_simple/sgen3sis.rds"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">file.exists</span>(sim_path)) {</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(sim_path)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Precomputed output not found at output/config_simple. Running the simple simulation now..."</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">&lt;-</span> <span class="fu">run_simulation</span>(</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">config =</span> <span class="fu">here</span>(<span class="st">"data/config/config_simple.R"</span>),</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">landscape =</span> <span class="fu">here</span>(<span class="st">"data/space"</span>),</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">output_directory =</span> <span class="fu">here</span>(<span class="st">"output"</span>),</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="dv">0</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In addition to the simulation output summary, we include a flag indicating whether the simulation completed successfully or the criteria for stopping, such as an excessive number of species. This section also provides system information and simulation-specific parameters.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check elements inside the sim object</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(sim)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "summary"    "flag"       "system"     "parameters"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize the outputs</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_summary</span>(sim)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="setup_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot richness from summary in custom fashion</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>na_mask <span class="ot">&lt;-</span> <span class="fu">is.na</span>(lc<span class="sc">$</span>elevation[,<span class="st">"0"</span>])</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>rich <span class="ot">&lt;-</span> sim<span class="sc">$</span>summary<span class="sc">$</span><span class="st">`</span><span class="at">richness-final</span><span class="st">`</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>rich[na_mask,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(terra<span class="sc">::</span><span class="fu">rast</span>(rich, <span class="at">type=</span><span class="st">"xyz"</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">"grey"</span>, gen3sis<span class="sc">::</span><span class="fu">color_richness_non_CVDCBP</span>(<span class="fu">max</span>(rich, <span class="at">na.rm=</span>T))), <span class="at">main=</span><span class="st">"Richness"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="setup_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot richness at time step 32 using saved data</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sps32 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"output/config_simple/species/species_t_32.rds"</span>))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>lc32 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">"output/config_simple/landscapes/landscape_t_32.rds"</span>))</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_richness</span>(sps32, lc32)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="setup_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Beyond the custom storage mediated over the observer function, we have a standard phylogeny stored as phy.nex as well as a copy of the config used for the simulation.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>phy <span class="ot">&lt;-</span> <span class="fu">read.nexus</span>(<span class="fu">file.path</span>(<span class="fu">here</span>(<span class="st">"output/config_simple/phy.nex"</span>)))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(phy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="setup_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div style="background-color: lightgreen; padding: 1px;">
+<p>🏋💻 <strong>Exercise</strong> [max 2 min] Think of 3 ways to change extinction rates?</p>
+</div>
+</section>
+<section id="customize-simulations" class="level2">
+<h2 class="anchored" data-anchor-id="customize-simulations">4. Customize simulations</h2>
+<p>For an example of a more complex simulation, with species abundances, traits trading off and evolving check the config_M2_TH.R.</p>
+<p>We will modify it so that allopatric speciation is faster.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>conf <span class="ot">&lt;-</span> <span class="fu">create_input_config</span>(<span class="fu">here</span>(<span class="st">"data/config/config_M2_TH.R"</span>))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>conf<span class="sc">$</span>gen3sis<span class="sc">$</span>speciation<span class="sc">$</span>divergence_threshold <span class="ot">=</span> <span class="dv">30</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>We will also change the observer function to save the presence/absence matrix for each time step.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>conf<span class="sc">$</span>gen3sis<span class="sc">$</span>general<span class="sc">$</span>end_of_timestep_observer <span class="ot">=</span> <span class="cf">function</span>(data, vars, config){</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_richness</span>(data<span class="sc">$</span>all_species, data<span class="sc">$</span>landscape)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># make p/a matrices</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  out_dir <span class="ot">&lt;-</span> config<span class="sc">$</span>directories<span class="sc">$</span>output</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">file.exists</span>(<span class="fu">file.path</span>(out_dir,<span class="st">"occs"</span>))){</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dir.create</span>(<span class="fu">file.path</span>(out_dir, <span class="st">"occs"</span>))</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># cell names</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  all_cells <span class="ot">&lt;-</span> <span class="fu">rownames</span>(data<span class="sc">$</span>landscape<span class="sc">$</span>coordinates)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># get 0 for absence and 1 for presence in each grid cell</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  asp <span class="ot">&lt;-</span> <span class="fu">do.call</span>(cbind,</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">lapply</span>(data<span class="sc">$</span>all_species, <span class="at">FUN =</span> <span class="cf">function</span>(x) {</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">ifelse</span>(all_cells <span class="sc">%in%</span> <span class="fu">names</span>(x<span class="sc">$</span>abundance), <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>                  }))</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># colnames are species names</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(asp ) <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(data<span class="sc">$</span>all_species, <span class="cf">function</span>(x){x<span class="sc">$</span>id}))</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># column bind with x/y coordinates</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>  presence_absence_matrix <span class="ot">&lt;-</span> <span class="fu">cbind</span>(data<span class="sc">$</span>landscape<span class="sc">$</span>coordinates, asp)</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">saveRDS</span>(presence_absence_matrix, </span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">file=</span><span class="fu">file.path</span>(out_dir,<span class="st">"occs"</span>, <span class="fu">paste0</span>(<span class="st">"pa_t_"</span>,vars<span class="sc">$</span>ti, <span class="st">".rds"</span>)))</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>simod <span class="ot">&lt;-</span> <span class="fu">run_simulation</span>(<span class="at">config=</span>conf, </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">landscape=</span><span class="fu">here</span>(<span class="st">"data/space"</span>), </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">output_directory=</span><span class="fu">tempdir</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The dynamics is different from the simple simulation, with more species and a some extinction events.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="setup_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="setup_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div style="background-color: lightgreen; padding: 1px;">
+<p>🏋💻 <strong>Exercise</strong> [15 min] Review the config_M2_TH.R file and try to understand what it’s doing. Consider how you might modify the configuration or apply it to a specific research question.</p>
+</div>
+</section>
+<section id="troubleshoot" class="level2">
+<h2 class="anchored" data-anchor-id="troubleshoot">5. Troubleshoot</h2>
+<p>Creating or modifying a gen3sis configuration can definitely lead to some weird errors, especially since it’s so flexible. That’s the downside, along with the steep learning curve. But if you’re not too overwhelmed, you’re doing great!</p>
+<p>Here are some handy debugging tips for when you run into those pesky errors:</p>
+<p>browser(): This function lets you pause the execution and explore what’s going on. It’s like a pit stop where you can check out variables and step through the code.</p>
+<p>To make your R session enter browser mode whenever you hit an error, you can use: <em>options(error = recover)</em>. This will help you diagnose and fix issues more easily.</p>
+<p>You can also condition browser calls, which is very useful when you want to stop execution at a specific time step or when a certain condition is met. Here’s an example:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use 'stop_time' to halt execution at a specific timestep in the landscape object:</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>stop_time <span class="ot">&lt;-</span> <span class="st">"62"</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>get_dispersal_values <span class="ot">&lt;-</span> <span class="cf">function</span>(n, species, landscape, config) {</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (landscape<span class="sc">$</span>timestep <span class="sc">==</span> stop_time) {</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">browser</span>()</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># You can also check the 'vars' object for the current timestep:</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    vars <span class="ot">&lt;-</span> <span class="fu">dynGet</span>(<span class="st">"vars"</span>, <span class="at">inherits =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (vars<span class="sc">$</span>ti <span class="sc">==</span> stop_time) {</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">browser</span>()</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="About this course">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">About this course</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./repeat_real.html" class="pagination-link" aria-label="Repeat for real">
+        <span class="nav-page-text"><span class="chapter-title">Repeat for real</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
