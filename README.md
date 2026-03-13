@@ -2,8 +2,11 @@
 
 [course page here](https://ohagen.github.io/course_MEEM_GU/)
 
+## About
 
+This course was created and is maintained by Prof. Oskar Hagen (Goethe University Frankfurt) using Visual Studio Code and RStudio. LLM tools were used to assist with code generation, debugging, and grammar checking. For questions or suggestions, please open an issue in this repository or contact the maintainer directly.
 
+Note that some material was imported from ANU, developed in collaboration with Alexander Skeels
 
 ## License
 

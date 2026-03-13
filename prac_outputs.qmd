@@ -1,5 +1,5 @@
 ---
-title: "🖥️ Practical Emergent Silicodiversity"
+title: "🖥️ Practical Emergent Diversity"
 execute: 
   eval: TRUE
 ---
@@ -31,8 +31,10 @@ First, let's make sure we have the necessary packages loaded
 The first object we will look at today is the sgenesis.rds file. This file contains a summary of the simulation. Which we can plot (as we did yesterday) with the plot_summary function. This is the same object, that you would have in memory by running a simulation with run_simulation.
 
 ```{r}
+# path to the simulation output folder used throughout this practical
 config_dir <- here::here("output", "islands", "config_islands_simple_Day1Prac3_M1")
 
+# load the simulation summary object produced by gen3sis
 sim <- readRDS(file.path(config_dir, "sgen3sis.rds"))
 
 # look at what the simulation summary contains
@@ -72,7 +74,7 @@ na_mask <- is.na(lc$elevation[,"0"])
 rich <- sim$summary$`richness-final`
 rich[na_mask,3] <- NA
 
-# turn richness summary into a raster 
+# turn the summary table of x, y, richness values into a raster
 richness <- rast(rich, type="xyz")
 
 # plot, the sea is darblue, given by hexadecimal color code 
@@ -106,7 +108,8 @@ The phylogeny object is pretty straight forward. It is a nexus file containing t
 ```{r}
 # read phy
 phy <- read.nexus(file.path(config_dir, "phy.nex"))
-# plot phy
+
+# quick tree plot; axisPhylo adds time/depth along the x-axis
 plot(phy, cex=0.4)
 axisPhylo()
 ```
@@ -114,7 +117,7 @@ axisPhylo()
 From this object we can look at lineages through time plots and estimate trends in diversification. The gamma statistic is one way to detect diversification slowdowns or speedups, with positive values indicating nodes are more closely pushed up towards the tips (speed up) and negative values indicating nodes are closer to the root (slowdown) ([Pybus and Harvey 2000](https://royalsocietypublishing.org/doi/10.1098/rspb.2000.1278)). There are lots of other kinds of measures of phylogenetic tree shape, such as metrics of tree imbalance (Colless's Index, Beta-Splitting Paramater, etc.)
 
 ```{r}
-# plot an ltt
+# ltt() both plots the lineage-through-time curve and returns summary statistics
 ltt_M1 <-ltt(phy)
 
 # look at the gamma statistic
@@ -176,14 +179,15 @@ So, if we want to map out the distribution of species 1 at timestep 0, we just n
 
 ```{r}
 par(mfrow=c(1,3))
+
 # first plot the islands out from the landscape object
 patch_xyz <- rast(lc$patch[,c("x", "y", "0")], type="xyz")
 plot(patch_xyz, main="Island Patches", col=palette()[c(2,3,4,6)], colNA="#000033")
 
-# pull out values of the landscape where the species is found
+# match occupied cell IDs from the species traits table back to landscape coordinates
 species1_xyz <- lc$patch[which(rownames(lc$patch) %in% rownames(species_t_0[[1]]$traits)), c("x", "y", "0")]
 
-# turn it into a raster
+# convert those occupied cells to a raster and extend to the full island extent for plotting
 species1_xyz <- rast(species1_xyz, type="xyz")
 species1_xyz <- extend(species1_xyz, patch_xyz)
 plot(species1_xyz, main= "Species 1 Distribution", colNA="#000033")
@@ -200,7 +204,7 @@ gen3sis::plot_species_presence(species_t_0[[1]], landscape_t_0)
 Lets try and link the species trait data to the phylogeny to start learning something about what exactly took place during our simulation! Let's get the mean trait value of the temperature niche and also the islands that each species belongs too.
 
 ```{r}
-# lets create a data frame
+# build a species-level table that we can join to the phylogeny
 daf <- data.frame("id"= paste0("species",sapply(species_t_0, function(x)x$id)),
                  "mean_temp"=NA,
                  "island1"=0,
@@ -214,22 +218,22 @@ head(daf)
 
 # Use sapply on the species object to get their mean trait values
 daf$mean_temp <- sapply(species_t_0, function(x){
-  # x <- species_t_0[[1]]
+  # average the temperature niche centre across all populations of each species
   mean(x$traits[, "temp_niche_centre"], na.rm=T)
   })
 
 # Get the island patch id values in a for loop
 for(i in 1:length(species_t_0)){
-  #I'm here because it is a good idea to test code on a single species before running it on all species
+  # useful debugging shortcut:
   # i <- 1 
-  # as before we get the lanscape values of each species
+
+  # recover the island patch IDs occupied by this species
   speciesi_xyz <- lc$patch[which(rownames(lc$patch) %in% rownames(species_t_0[[i]]$traits)), c("x", "y", "0")]
   
   # then pull out the unique values (note that species might occur on more than one island)
   islands <- unique(speciesi_xyz[, 3])
   
-  # then if species are on the island, give that column a value of 1
-  
+  # store simple presence/absence indicators for each island
   daf$island1[i] <- ifelse(1 %in% islands, 1, 0)
   daf$island2[i] <- ifelse(2 %in% islands, 1, 0)
   daf$island3[i] <- ifelse(3 %in% islands, 1, 0)
@@ -250,7 +254,7 @@ Plot out the continuously evolving temperature niche trait
 
 ```{r}
 
-# create a named vector for the log of the temperature niche trait
+# create a named trait vector so tip labels can be matched automatically
 temp_niche <- daf$mean_temp
 names(temp_niche) <- daf$id
 
@@ -263,16 +267,18 @@ Not much variation in that trait, due to the combined effects of trait homogeniz
 ```{r}
 par(mfrow=c(1,2))
 
-# format each island
+# helper to convert an island membership column into the matrix format expected by tiplabels()
 formatIsland <- function(island, phy=phy, daf=daf){
   islandf <- as.factor(daf[, island])
   names(islandf) <- daf$id
+
+  # reorder rows so the island states line up with the phylogeny tip order
   islandmat<-to.matrix(islandf,levels(islandf))
   islandmat<-islandmat[phy$tip.label,]
   return(list(islandf, islandmat))
 }
 
-
+# first panel: tree with pie symbols showing present-day island occupancy
 plotTree(phy,ftype="i",offset=1,fsize=0.9, xlim=c(0, 75))
 
 tiplabels(pie=formatIsland(island="island1", phy=phy, daf=daf)[[2]],piecol=palette()[c(8,2)],cex=0.6, adj=12+1)
@@ -290,6 +296,8 @@ We actually know which islands each lineage started on because we recorded this 
 ```{r}
 
 par(mfrow=c(1,2))
+
+# second comparison: starting island first, then present-day occupancy columns
 plotTree(phy,ftype="i",offset=1,fsize=0.4, xlim=c(0, 75))
 my_cex=0.9
 # add the starting island as the first colum
@@ -313,35 +321,57 @@ Common spatial biodiversity analyses link information measured at the species le
 ```{r}
 # grid cell level PAM
 
-# create an empty data frame with the dimensions of species x sites
-PAM <- data.frame(matrix(0, nrow=nrow(lc$elevation), ncol=length(species_t_0)))
-
-# given names to rows and columns
-rownames(PAM) <- rownames(lc$elevation)
-colnames(PAM) <- paste0("species", sapply(species_t_0, function(x)x$id))
-
-# loop over species and add value of 1 to all sites the species is present
-for(i in 1:length(species_t_0)){
-  
-  PAM[which(rownames(PAM) %in% names(species_t_0[[i]]$abundance)), i] <- 1
+# define site IDs from landscape row names (fallback to row indices if missing)
+site_ids <- rownames(lc$elevation)
+if (is.null(site_ids)) {
+  site_ids <- as.character(seq_len(nrow(lc$elevation)))
 }
 
-# how does it look?
-print(PAM[1:10, 1:10])
+# create an empty site-by-species presence-absence matrix
+PAM <- matrix(
+  0L,
+  nrow = length(site_ids),
+  ncol = length(species_t_0),
+  dimnames = list(site_ids, paste0("species", sapply(species_t_0, function(x) x$id)))
+)
+
+# fill the matrix with presences by matching occupied cell IDs to rows
+for (i in seq_along(species_t_0)) {
+  present_sites <- names(species_t_0[[i]]$abundance)
+
+  # if abundance names are unavailable, use trait row names as occupied cell IDs
+  if (is.null(present_sites) || length(present_sites) == 0) {
+    present_sites <- rownames(species_t_0[[i]]$traits)
+  }
+
+  present_sites <- intersect(site_ids, as.character(present_sites))
+  if (length(present_sites) > 0) {
+    PAM[present_sites, i] <- 1L
+  }
+}
+
+PAM <- as.data.frame(PAM, check.names = FALSE)
+
+# how does it look? show first occupied cells so the preview includes presences
+occupied_rows <- which(rowSums(PAM) > 0)
+print(PAM[head(occupied_rows, 10), seq_len(min(10, ncol(PAM)))])
 ```
 
 ```{r}
-# we can estimate Phylogenetic diversity
+# these functions treat PAM rows as sites and columns as species
+# PD = total branch length represented in a site
 pd_islands <- pd(PAM, phy)
 
-# we can also measure mean phylogenetic distance and mean nearest neighbour distance
+# MPD and MNTD summarize how related co-occurring species are
 mpd_islands <- mpd(PAM, cophenetic(phy))
 mntd_islands <- mntd(PAM,cophenetic(phy))
 
-# link these back with the landscape by joining to the landscape lat/long
+# join the community metrics back to x/y coordinates for mapping
 community_phylo <- cbind(lc$elevation[, c("x", "y")], pd_islands, mpd_islands, mntd_islands)
 
 par(mfrow=c(2,2))
+
+# build one raster per metric from the x/y/value columns
 sr_ras <- rast(community_phylo[, c("x", "y", "SR")], type="xyz")
 pd_ras <- rast(community_phylo[, c("x", "y", "PD")], type="xyz")
 mpd_ras <- rast(community_phylo[, c("x", "y", "mpd_islands")], type="xyz")
@@ -370,6 +400,7 @@ In this part we are going to load in a data set from Skeels et al. (2022) *SystB
 Not only did we change the overall model of evolution, we also varied key parameters for rates of niche evolution (simga_squared_t), rates of body size evolution (sigma_squared_bs), dispersal, and the temperature niche breadth (omega), the exponent of the divergence factor with temp/body size (lambda), and the divergence threshold. Load in the data and take a look, the first 6 columns are the model parameters we varied.
 
 ```{r}
+# each row is one simulation replicate; the first six columns are input parameters
 sim_data <- read.csv(here::here("data", "simulated_summary_statistics.csv"))
 
 # look at the first few columns
@@ -413,6 +444,24 @@ ggplot(sim_data, aes(x=m, y=temp_DR_cor, fill=m))+
 
 ::: {style="background-color: lightgreen; padding: 1px;"}
 ❓ **Question** \[max 5 min\] Do these patterns fit our predictions? Which model effects look strongest, and which metrics seem least informative?
+
+<details>
+
+Think of this section in two steps:
+
+1) Which model parameters influence biodiversity metrics?
+
+2) Which metrics are weakly explained and likely need nonlinear models/interactions?
+
+From the scatter/boxplot views, some associations are visible, but the strength differs by metric. In general, some metrics show clearer model separation than others. This is expected in eco-evolutionary simulations because multiple processes can produce similar emergent patterns.
+
+Useful interpretation template:
+
+- Stronger-looking effects: metrics with clearer separation among models and tighter within-model spread.
+- Weaker/less informative effects: metrics with substantial overlap among models and high dispersion.
+- Key caveat: visual trends are helpful, but formal models (below) are needed to quantify effect size and uncertainty.
+
+</details>
 :::
 
 We can also look at how some of these metrics varied with the continuous model parameters such as dispersal ability.
@@ -435,7 +484,8 @@ To perform a simple kind of sensitivity test we might ask how each of the model 
 
 ```{r}
 
-# first scale parameters to be in the same units
+# copy the data and standardize only the six input parameters
+# this keeps coefficient magnitudes comparable across predictors
 sim_data_scaled <- sim_data
 sim_data_scaled[,1:6] <- scale(sim_data_scaled[,1:6] )
 
@@ -448,6 +498,34 @@ summary(lm1)
 
 ::: {style="background-color: lightgreen; padding: 1px;"}
 🏋💻 **Exercise** \[max 10 min\] Interpret the regression output for `lm1`. Are our expectations met for temperature niche evolution, and what surprises do you see?
+
+<details>
+
+`lm1` asks whether model parameters predict `temp_kurtosis`.
+  - Kurtosis captures tail heaviness (how much probability is in extreme values).
+  - Higher kurtosis means more extreme trait values relative to a normal-like distribution.
+
+Why scale parameters first?
+
+- `sim_data_scaled[,1:6] <- scale(sim_data_scaled[,1:6])`
+- This puts predictors on comparable units (mean 0, sd 1), so coefficient magnitudes are interpretable side-by-side.
+
+How to interpret coefficients:
+
+- A positive coefficient means `temp_kurtosis` tends to increase as that parameter increases (in standard deviation units).
+- A negative coefficient means the opposite.
+- P-values indicate evidence for a linear effect, conditional on the other predictors.
+
+Expectation check:
+
+- If `sigma_squared_t` (rate of temperature niche evolution) is positive and supported, that matches the biological expectation: faster niche evolution can generate more extreme trait values and heavier tails in the niche distribution.
+
+What can be surprising:
+
+- Some parameters may be weak/non-significant even if biologically important.
+- `R^2` may be modest. This is common in complex systems where nonlinearities, interactions, and stochasticity drive much of the variation.
+
+</details>
 :::
 
 Let's try a few other biodiversity patterns where the predictions are less clear.
@@ -488,60 +566,114 @@ if (!requireNamespace("caret", quietly = TRUE)) {
   )
 }
 
-# get just the biodiversity metrics
+# keep the class label `m` plus the biodiversity summary statistics
 sim_data_ms <- sim_data[,7:ncol(sim_data)]
 
-# remove MRDs variables from sim data
+# drop the MRD summary variables to match the teaching example feature set
 sim_data_ms <- sim_data_ms[, -which(grepl("MRDs",colnames(sim_data_ms)))]
 
-# partition into a training and testing dataset for cross validation
-train_index <- caret::createDataPartition(sim_data_ms$m, p = .66, list = FALSE,  times = 1)
+# reuse the course-wide seed so this split stays reproducible across renders
+set.seed(course_seed)
+
+# create a stratified split based on the model label `m`
+# p = .66 keeps about two thirds of rows for training
+# list = FALSE returns integer row indices, and times = 1 makes one split
+train_index <- caret::createDataPartition(sim_data_ms[["m"]], p = .66, list = FALSE,  times = 1)
 train_data <- sim_data_ms[ train_index ,]
 test_data  <- sim_data_ms[-train_index ,]
 
-# preprocess values - we will scale and center values
+# learn centering/scaling from the training set only, then apply the same transform to both sets
 preprocessed_values <- caret::preProcess(train_data, method = c("center", "scale"))
 train_transformed   <- predict(preprocessed_values, train_data)
 test_transformed    <- predict(preprocessed_values, test_data )
 
-# configure the cross-validation paramaters
-train_control <- caret::trainControl( method = "repeatedcv", number = 10, repeats = 10, classProbs = TRUE, savePredictions = TRUE)
+# repeated 10-fold CV estimates expected training performance during model fitting
+# class probabilities are kept so we can inspect uncertainty later
+train_control <- caret::trainControl(
+  method = "repeatedcv",
+  number = 10,
+  repeats = 10,
+  classProbs = TRUE,
+  savePredictions = TRUE,
+  allowParallel = FALSE
+)
 
-# FIT MODELS
+# use all biodiversity metrics as predictors of the generating model `m`
 f1 <- formula(paste("m ~ ", paste(names(sim_data_ms)[2:c(length(names(sim_data_ms)))], collapse=" + ")))
 
 ## LINEAR DISCRIMINANT ANALYSIS
 # note we'll run an LDA because they're quick - many other kinds of models to choose from 
+set.seed(course_seed)
 lda_train        <- caret::train(f1, data=train_transformed, method = "lda", trControl = train_control, verbose = T)
 
-#predict on test data
+# evaluate on the held-out test set that was not used during fitting
 lda_test        <- predict(lda_train, test_transformed)
 
-# classification accuracy
-lda_cm        <- caret::confusionMatrix(data = lda_test, reference = as.factor(test_transformed$m), mode = "prec_recall")
+# compute one-vs-all precision/recall metrics for each class
+lda_cm        <- caret::confusionMatrix(data = lda_test, reference = as.factor(test_transformed[["m"]]), mode = "prec_recall")
 
 # how well did the model perform
 lda_cm 
 
 ```
 
+::: {style="border-left: 4px solid #4C78A8; background-color: #F4F8FB; padding: 0.6rem 0.8rem; margin-bottom: 1rem;"}
+**Quick guide to the class metrics**
+
+These are reported separately for each model class (`m0`, `m1`, `m2`, `m3`), treating one class at a time.
+
+- `Precision`: Of the cases predicted to be this class, how many were correct?
+- `Recall`: Of the cases that truly were this class, how many did the model recover?
+- `F1`: The harmonic mean of precision and recall; useful when you want both to be high.
+- `Prevalence`: The true proportion of this class in the test data.
+- `Detection Rate`: The proportion of all cases that were correctly assigned to this class.
+- `Detection Prevalence`: The proportion of all cases that the model predicted as this class.
+- `Balanced Accuracy`: The average of sensitivity and specificity; useful when comparing classes fairly.
+:::
+
 ::: {style="background-color: lightgreen; padding: 1px;"}
 ❓ **Question** \[max 5 min\] What is the overall classification accuracy, and are some models predicted better than others?
+
+<details>
+
+From the confusion matrix output shown here:
+
+- Overall accuracy: `0.7559` (~75.59%)
+- 95% CI: `(0.7143, 0.7942)`
+- No-information rate: `0.2505` (chance level with 4 balanced classes)
+
+So the classifier performs far above chance.
+
+Are some models predicted better?
+
+- Yes. Using F1 score (higher is better):
+  - `m0`: `0.8500` (best overall in this seeded run)
+  - `m1`: `0.8326`
+  - `m2`: `0.7094`
+  - `m3`: `0.6360` (hardest)
+
+If you look at other metrics, `m1` has the highest precision (`0.8762`), while `m0` has the highest recall (`0.8718`) and balanced accuracy (`0.9059`).
+
+Main confusion pattern:
+
+- `m2` and `m3` are still the most frequently confused pair, suggesting these two models can produce similar biodiversity-statistic signatures.
+
+</details>
 :::
 
 Now we'll use this model to predict the possible model of diversification in orders of terrestrial vertebrates.
 
 ```{r, eval=TRUE}
-# first subset and clean the colnames of the empirical data
+# load the empirical vertebrate summary statistics
 empirical_data <- read.csv(here::here("data", "order_empirical_summary_statistics.csv"))
 
-# just want to look at diverse clades
+# restrict to clades with enough species for the summaries to be informative
 empirical_data <- na.omit(empirical_data[which(empirical_data$n_species >= 20),])
 
 # make labels lower case
 empirical_data$taxon <- tolower(empirical_data$taxon)
 
-# clean up a few names because I'm a grub
+# rename columns so the empirical data uses the same feature names as the simulation table
 colnames(empirical_data)[which(colnames(empirical_data) == "taxon")] <- "m"
 colnames(empirical_data)[which(colnames(empirical_data)=="rs_kutosis")] <- "rs_kurtosis"
 colnames(empirical_data)[which(colnames(empirical_data)=="n_species")] <- "n_extant_diversity"
@@ -553,7 +685,7 @@ colnames(empirical_data)[which(colnames(empirical_data) == "sackinI_mcc")] <- "s
 colnames(empirical_data)[which(colnames(empirical_data) == "gamma_mcc")] <- "gamma"
 
 
-# ok these should be able to be matched now
+# keep only features shared with the simulated training data, then match the same column order
 empirical_data <- empirical_data[, which(colnames(empirical_data) %in% colnames(sim_data_ms))]
 empirical_subset <- empirical_data[, match(colnames(sim_data_ms), colnames(empirical_data))]
 
@@ -562,17 +694,18 @@ colnames(sim_data_ms)[which(!colnames(sim_data_ms) %in% colnames(empirical_subse
 colnames(empirical_subset)[which(!colnames(empirical_subset) %in% colnames(sim_data_ms))]
 colnames(empirical_subset) == colnames(sim_data_ms)
 
-# Process empirical data in the same way as for the simulated data
+# apply the exact same preprocessing learned from the training set
 simulated_transformed <- predict(preprocessed_values, sim_data_ms )
 empirical_transformed <- predict(preprocessed_values, empirical_subset )
 
+# keep the interface general so more than one fitted model could be compared later
 model_set <- list(lda_train)
 
 # predict on empirical
 class_predictions   <- predict(model_set, newdata = empirical_transformed, type = "raw", na.action = na.omit)
 class_probabilities <- predict(model_set, newdata = empirical_transformed, type = "prob", na.action = na.omit)
 
-# sum the classes
+# count how many empirical orders are assigned to each generating model
 colSums(do.call(rbind, class_predictions)) # TODO define class prediction table
 
 # now we can see which model is the most supported for each order
@@ -586,4 +719,30 @@ cbind(empirical_transformed$m, round(class_probabilities[[1]], 3))
 
 ::: {style="background-color: lightgreen; padding: 1px;"}
 🏋💻 **Exercise** \[max 10 min\] Summarize which diversification models are most supported across vertebrate orders and propose one biological interpretation.
+
+<details>
+
+Use this workflow:
+
+1) Count predicted classes with `table(class_predictions[[1]])`.
+
+2) Inspect confidence with `class_probabilities[[1]]`.
+
+3) Report both dominant classes and uncertainty.
+
+Example interpretation template:
+
+- If one model is most frequent across orders, that model has strongest support overall.
+- If many clades have split probabilities across two models, those models are not well-separated for those clades.
+
+Biological interpretation (example):
+
+- If `m3` (joint temperature + body size effects) dominates, this supports a multi-driver view of diversification where interacting mechanisms shape observed biodiversity patterns.
+- If `m2` is common in some groups, body-size-linked divergence may be especially important in those clades.
+
+Important caveat:
+
+- Model predictions are probabilistic, not absolute. Always report class probabilities, not only top-1 classes.
+
+</details>
 :::

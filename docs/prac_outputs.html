@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>🖥️ Practical Emergent Silicodiversity – Mechanistic Eco-Evolutionary Modelling</title>
+<title>🖥️ Practical Emergent Diversity – Mechanistic Eco-Evolutionary Modelling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prac_outputs.html"><span class="chapter-title">🖥️ Practical Emergent Silicodiversity</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./prac_outputs.html"><span class="chapter-title">🖥️ Practical Emergent Diversity</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -172,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prac_outputs.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">🖥️ Practical Emergent Silicodiversity</span></a>
+  <a href="./prac_outputs.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">🖥️ Practical Emergent Diversity</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -213,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">🖥️ Practical Emergent Silicodiversity</span></h1>
+<h1 class="title"><span class="chapter-title">🖥️ Practical Emergent Diversity</span></h1>
 </div>
 
 
@@ -245,12 +245,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="unnumbered anchored" data-anchor-id="simulation-summary-object-sgen3sis.rds">Simulation summary object (sgen3sis.rds)</h4>
 <p>The first object we will look at today is the sgenesis.rds file. This file contains a summary of the simulation. Which we can plot (as we did yesterday) with the plot_summary function. This is the same object, that you would have in memory by running a simulation with run_simulation.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>config_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"output"</span>, <span class="st">"islands"</span>, <span class="st">"config_islands_simple_Day1Prac3_M1"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(config_dir, <span class="st">"sgen3sis.rds"</span>))</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># look at what the simulation summary contains</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(sim)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># path to the simulation output folder used throughout this practical</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>config_dir <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"output"</span>, <span class="st">"islands"</span>, <span class="st">"config_islands_simple_Day1Prac3_M1"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load the simulation summary object produced by gen3sis</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(config_dir, <span class="st">"sgen3sis.rds"</span>))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># look at what the simulation summary contains</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(sim)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "summary"    "flag"       "system"     "parameters"</code></pre>
 </div>
@@ -322,7 +324,7 @@ initial     4     4           4           0
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>rich <span class="ot">&lt;-</span> sim<span class="sc">$</span>summary<span class="sc">$</span><span class="st">`</span><span class="at">richness-final</span><span class="st">`</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>rich[na_mask,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># turn richness summary into a raster </span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># turn the summary table of x, y, richness values into a raster</span></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>richness <span class="ot">&lt;-</span> <span class="fu">rast</span>(rich, <span class="at">type=</span><span class="st">"xyz"</span>)</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot, the sea is darblue, given by hexadecimal color code </span></span>
@@ -377,9 +379,10 @@ $`gen3sis-version`
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read phy</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>phy <span class="ot">&lt;-</span> <span class="fu">read.nexus</span>(<span class="fu">file.path</span>(config_dir, <span class="st">"phy.nex"</span>))</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot phy</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(phy, <span class="at">cex=</span><span class="fl">0.4</span>)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">axisPhylo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># quick tree plot; axisPhylo adds time/depth along the x-axis</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(phy, <span class="at">cex=</span><span class="fl">0.4</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axisPhylo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -390,7 +393,7 @@ $`gen3sis-version`
 </div>
 <p>From this object we can look at lineages through time plots and estimate trends in diversification. The gamma statistic is one way to detect diversification slowdowns or speedups, with positive values indicating nodes are more closely pushed up towards the tips (speed up) and negative values indicating nodes are closer to the root (slowdown) (<a href="https://royalsocietypublishing.org/doi/10.1098/rspb.2000.1278">Pybus and Harvey 2000</a>). There are lots of other kinds of measures of phylogenetic tree shape, such as metrics of tree imbalance (Colless’s Index, Beta-Splitting Paramater, etc.)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot an ltt</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ltt() both plots the lineage-through-time curve and returns summary statistics</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ltt_M1 <span class="ot">&lt;-</span><span class="fu">ltt</span>(phy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
@@ -488,22 +491,23 @@ $`gen3sis-version`
 <p>So, if we want to map out the distribution of species 1 at timestep 0, we just need to link those cell names (267/268/etc) to the landscape object and make a raster. Why don;t we try and see what islands species 1 is found on.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># first plot the islands out from the landscape object</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>patch_xyz <span class="ot">&lt;-</span> <span class="fu">rast</span>(lc<span class="sc">$</span>patch[,<span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"0"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)], <span class="at">colNA=</span><span class="st">"#000033"</span>)</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co"># pull out values of the landscape where the species is found</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>species1_xyz <span class="ot">&lt;-</span> lc<span class="sc">$</span>patch[<span class="fu">which</span>(<span class="fu">rownames</span>(lc<span class="sc">$</span>patch) <span class="sc">%in%</span> <span class="fu">rownames</span>(species_t_0[[<span class="dv">1</span>]]<span class="sc">$</span>traits)), <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"0"</span>)]</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co"># turn it into a raster</span></span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>species1_xyz <span class="ot">&lt;-</span> <span class="fu">rast</span>(species1_xyz, <span class="at">type=</span><span class="st">"xyz"</span>)</span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>species1_xyz <span class="ot">&lt;-</span> <span class="fu">extend</span>(species1_xyz, patch_xyz)</span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(species1_xyz, <span class="at">main=</span> <span class="st">"Species 1 Distribution"</span>, <span class="at">colNA=</span><span class="st">"#000033"</span>)</span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively we can use the plot_species function on gen3sis..</span></span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="co"># for that we load the landscape object of the respective time-step</span></span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>landscape_t_0 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(config_dir, <span class="st">"landscapes"</span>, <span class="st">"landscape_t_0.rds"</span>))</span>
-<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>gen3sis<span class="sc">::</span><span class="fu">plot_species_presence</span>(species_t_0[[<span class="dv">1</span>]], landscape_t_0)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># first plot the islands out from the landscape object</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>patch_xyz <span class="ot">&lt;-</span> <span class="fu">rast</span>(lc<span class="sc">$</span>patch[,<span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"0"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)], <span class="at">colNA=</span><span class="st">"#000033"</span>)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co"># match occupied cell IDs from the species traits table back to landscape coordinates</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>species1_xyz <span class="ot">&lt;-</span> lc<span class="sc">$</span>patch[<span class="fu">which</span>(<span class="fu">rownames</span>(lc<span class="sc">$</span>patch) <span class="sc">%in%</span> <span class="fu">rownames</span>(species_t_0[[<span class="dv">1</span>]]<span class="sc">$</span>traits)), <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"0"</span>)]</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co"># convert those occupied cells to a raster and extend to the full island extent for plotting</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>species1_xyz <span class="ot">&lt;-</span> <span class="fu">rast</span>(species1_xyz, <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>species1_xyz <span class="ot">&lt;-</span> <span class="fu">extend</span>(species1_xyz, patch_xyz)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(species1_xyz, <span class="at">main=</span> <span class="st">"Species 1 Distribution"</span>, <span class="at">colNA=</span><span class="st">"#000033"</span>)</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively we can use the plot_species function on gen3sis..</span></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="co"># for that we load the landscape object of the respective time-step</span></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>landscape_t_0 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(config_dir, <span class="st">"landscapes"</span>, <span class="st">"landscape_t_0.rds"</span>))</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>gen3sis<span class="sc">::</span><span class="fu">plot_species_presence</span>(species_t_0[[<span class="dv">1</span>]], landscape_t_0)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -517,7 +521,7 @@ $`gen3sis-version`
 <h4 class="unnumbered anchored" data-anchor-id="linking-the-species-object-and-phylogeny">Linking the species object and phylogeny</h4>
 <p>Lets try and link the species trait data to the phylogeny to start learning something about what exactly took place during our simulation! Let’s get the mean trait value of the temperature niche and also the islands that each species belongs too.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets create a data frame</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># build a species-level table that we can join to the phylogeny</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>daf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"id"</span><span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"species"</span>,<span class="fu">sapply</span>(species_t_0, <span class="cf">function</span>(x)x<span class="sc">$</span>id)),</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"mean_temp"</span><span class="ot">=</span><span class="cn">NA</span>,</span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"island1"</span><span class="ot">=</span><span class="dv">0</span>,</span>
@@ -539,22 +543,22 @@ $`gen3sis-version`
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use sapply on the species object to get their mean trait values</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>daf<span class="sc">$</span>mean_temp <span class="ot">&lt;-</span> <span class="fu">sapply</span>(species_t_0, <span class="cf">function</span>(x){</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># x &lt;- species_t_0[[1]]</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># average the temperature niche centre across all populations of each species</span></span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(x<span class="sc">$</span>traits[, <span class="st">"temp_niche_centre"</span>], <span class="at">na.rm=</span>T)</span>
 <span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  })</span>
 <span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the island patch id values in a for loop</span></span>
 <span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(species_t_0)){</span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#I'm here because it is a good idea to test code on a single species before running it on all species</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># useful debugging shortcut:</span></span>
 <span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># i &lt;- 1 </span></span>
-<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># as before we get the lanscape values of each species</span></span>
-<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>  speciesi_xyz <span class="ot">&lt;-</span> lc<span class="sc">$</span>patch[<span class="fu">which</span>(<span class="fu">rownames</span>(lc<span class="sc">$</span>patch) <span class="sc">%in%</span> <span class="fu">rownames</span>(species_t_0[[i]]<span class="sc">$</span>traits)), <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"0"</span>)]</span>
-<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># then pull out the unique values (note that species might occur on more than one island)</span></span>
-<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>  islands <span class="ot">&lt;-</span> <span class="fu">unique</span>(speciesi_xyz[, <span class="dv">3</span>])</span>
-<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># then if species are on the island, give that column a value of 1</span></span>
-<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># recover the island patch IDs occupied by this species</span></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>  speciesi_xyz <span class="ot">&lt;-</span> lc<span class="sc">$</span>patch[<span class="fu">which</span>(<span class="fu">rownames</span>(lc<span class="sc">$</span>patch) <span class="sc">%in%</span> <span class="fu">rownames</span>(species_t_0[[i]]<span class="sc">$</span>traits)), <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"0"</span>)]</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># then pull out the unique values (note that species might occur on more than one island)</span></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>  islands <span class="ot">&lt;-</span> <span class="fu">unique</span>(speciesi_xyz[, <span class="dv">3</span>])</span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># store simple presence/absence indicators for each island</span></span>
 <span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>  daf<span class="sc">$</span>island1[i] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="dv">1</span> <span class="sc">%in%</span> islands, <span class="dv">1</span>, <span class="dv">0</span>)</span>
 <span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>  daf<span class="sc">$</span>island2[i] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="dv">2</span> <span class="sc">%in%</span> islands, <span class="dv">1</span>, <span class="dv">0</span>)</span>
 <span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>  daf<span class="sc">$</span>island3[i] <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="dv">3</span> <span class="sc">%in%</span> islands, <span class="dv">1</span>, <span class="dv">0</span>)</span>
@@ -579,7 +583,7 @@ $`gen3sis-version`
 </div>
 <p>Plot out the continuously evolving temperature niche trait</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a named vector for the log of the temperature niche trait</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a named trait vector so tip labels can be matched automatically</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>temp_niche <span class="ot">&lt;-</span> daf<span class="sc">$</span>mean_temp</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(temp_niche) <span class="ot">&lt;-</span> daf<span class="sc">$</span>id</span>
 <span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -597,24 +601,26 @@ $`gen3sis-version`
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co"># format each island</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co"># helper to convert an island membership column into the matrix format expected by tiplabels()</span></span>
 <span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>formatIsland <span class="ot">&lt;-</span> <span class="cf">function</span>(island, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf){</span>
 <span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  islandf <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(daf[, island])</span>
 <span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(islandf) <span class="ot">&lt;-</span> daf<span class="sc">$</span>id</span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  islandmat<span class="ot">&lt;-</span><span class="fu">to.matrix</span>(islandf,<span class="fu">levels</span>(islandf))</span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  islandmat<span class="ot">&lt;-</span>islandmat[phy<span class="sc">$</span>tip.label,]</span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(islandf, islandmat))</span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plotTree</span>(phy,<span class="at">ftype=</span><span class="st">"i"</span>,<span class="at">offset=</span><span class="dv">1</span>,<span class="at">fsize=</span><span class="fl">0.9</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">75</span>))</span>
-<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island1"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island2"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">3</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">3</span>)</span>
-<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island3"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">5</span>)</span>
-<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island4"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">7</span>)</span>
-<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># reorder rows so the island states line up with the phylogeny tip order</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  islandmat<span class="ot">&lt;-</span><span class="fu">to.matrix</span>(islandf,<span class="fu">levels</span>(islandf))</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  islandmat<span class="ot">&lt;-</span>islandmat[phy<span class="sc">$</span>tip.label,]</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(islandf, islandmat))</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a><span class="co"># first panel: tree with pie symbols showing present-day island occupancy</span></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plotTree</span>(phy,<span class="at">ftype=</span><span class="st">"i"</span>,<span class="at">offset=</span><span class="dv">1</span>,<span class="at">fsize=</span><span class="fl">0.9</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">75</span>))</span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island1"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island2"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">3</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">3</span>)</span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island3"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">5</span>)</span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island4"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>)],<span class="at">cex=</span><span class="fl">0.6</span>, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">7</span>)</span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -627,18 +633,20 @@ $`gen3sis-version`
 <p>We actually know which islands each lineage started on because we recorded this as a trait (we could also look at the past species objects to figure this out but we have used a shortcut though the traits).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotTree</span>(phy,<span class="at">ftype=</span><span class="st">"i"</span>,<span class="at">offset=</span><span class="dv">1</span>,<span class="at">fsize=</span><span class="fl">0.4</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">75</span>))</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>my_cex<span class="ot">=</span><span class="fl">0.9</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add the starting island as the first colum</span></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island_start"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)],<span class="at">cex=</span>my_cex<span class="sc">*</span><span class="dv">3</span>, <span class="at">adj=</span><span class="dv">12</span>)</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island1"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island2"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">3</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">3</span>)</span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island3"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">5</span>)</span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island4"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">7</span>)</span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add island plot</span></span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># second comparison: starting island first, then present-day occupancy columns</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plotTree</span>(phy,<span class="at">ftype=</span><span class="st">"i"</span>,<span class="at">offset=</span><span class="dv">1</span>,<span class="at">fsize=</span><span class="fl">0.4</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">75</span>))</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>my_cex<span class="ot">=</span><span class="fl">0.9</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co"># add the starting island as the first colum</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island_start"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)],<span class="at">cex=</span>my_cex<span class="sc">*</span><span class="dv">3</span>, <span class="at">adj=</span><span class="dv">12</span>)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island1"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">2</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island2"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">3</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">3</span>)</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island3"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">5</span>)</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="fu">tiplabels</span>(<span class="at">pie=</span><span class="fu">formatIsland</span>(<span class="at">island=</span><span class="st">"island4"</span>, <span class="at">phy=</span>phy, <span class="at">daf=</span>daf)[[<span class="dv">2</span>]],<span class="at">piecol=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">6</span>)],<span class="at">cex=</span>my_cex, <span class="at">adj=</span><span class="dv">12</span><span class="sc">+</span><span class="dv">7</span>)</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="co"># add island plot</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(patch_xyz, <span class="at">main=</span><span class="st">"Island Patches"</span>, <span class="at">col=</span><span class="fu">palette</span>()[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -655,67 +663,89 @@ $`gen3sis-version`
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grid cell level PAM</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create an empty data frame with the dimensions of species x sites</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>PAM <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow=</span><span class="fu">nrow</span>(lc<span class="sc">$</span>elevation), <span class="at">ncol=</span><span class="fu">length</span>(species_t_0)))</span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co"># given names to rows and columns</span></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(PAM) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(lc<span class="sc">$</span>elevation)</span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(PAM) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"species"</span>, <span class="fu">sapply</span>(species_t_0, <span class="cf">function</span>(x)x<span class="sc">$</span>id))</span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="co"># loop over species and add value of 1 to all sites the species is present</span></span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(species_t_0)){</span>
-<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>  PAM[<span class="fu">which</span>(<span class="fu">rownames</span>(PAM) <span class="sc">%in%</span> <span class="fu">names</span>(species_t_0[[i]]<span class="sc">$</span>abundance)), i] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a><span class="co"># how does it look?</span></span>
-<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(PAM[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define site IDs from landscape row names (fallback to row indices if missing)</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>site_ids <span class="ot">&lt;-</span> <span class="fu">rownames</span>(lc<span class="sc">$</span>elevation)</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">is.null</span>(site_ids)) {</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>  site_ids <span class="ot">&lt;-</span> <span class="fu">as.character</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(lc<span class="sc">$</span>elevation)))</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create an empty site-by-species presence-absence matrix</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>PAM <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>L,</span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="fu">length</span>(site_ids),</span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="fu">length</span>(species_t_0),</span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimnames =</span> <span class="fu">list</span>(site_ids, <span class="fu">paste0</span>(<span class="st">"species"</span>, <span class="fu">sapply</span>(species_t_0, <span class="cf">function</span>(x) x<span class="sc">$</span>id)))</span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a><span class="co"># fill the matrix with presences by matching occupied cell IDs to rows</span></span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(species_t_0)) {</span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a>  present_sites <span class="ot">&lt;-</span> <span class="fu">names</span>(species_t_0[[i]]<span class="sc">$</span>abundance)</span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if abundance names are unavailable, use trait row names as occupied cell IDs</span></span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(present_sites) <span class="sc">||</span> <span class="fu">length</span>(present_sites) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a>    present_sites <span class="ot">&lt;-</span> <span class="fu">rownames</span>(species_t_0[[i]]<span class="sc">$</span>traits)</span>
+<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb52-25"><a href="#cb52-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-26"><a href="#cb52-26" aria-hidden="true" tabindex="-1"></a>  present_sites <span class="ot">&lt;-</span> <span class="fu">intersect</span>(site_ids, <span class="fu">as.character</span>(present_sites))</span>
+<span id="cb52-27"><a href="#cb52-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(present_sites) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb52-28"><a href="#cb52-28" aria-hidden="true" tabindex="-1"></a>    PAM[present_sites, i] <span class="ot">&lt;-</span> <span class="dv">1</span>L</span>
+<span id="cb52-29"><a href="#cb52-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb52-30"><a href="#cb52-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-31"><a href="#cb52-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-32"><a href="#cb52-32" aria-hidden="true" tabindex="-1"></a>PAM <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(PAM, <span class="at">check.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb52-33"><a href="#cb52-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-34"><a href="#cb52-34" aria-hidden="true" tabindex="-1"></a><span class="co"># how does it look? show first occupied cells so the preview includes presences</span></span>
+<span id="cb52-35"><a href="#cb52-35" aria-hidden="true" tabindex="-1"></a>occupied_rows <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">rowSums</span>(PAM) <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb52-36"><a href="#cb52-36" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(PAM[<span class="fu">head</span>(occupied_rows, <span class="dv">10</span>), <span class="fu">seq_len</span>(<span class="fu">min</span>(<span class="dv">10</span>, <span class="fu">ncol</span>(PAM)))])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   species1 species2 species3 species4 species5 species6 species7 species8
-1         0        0        0        0        0        0        0        0
-2         0        0        0        0        0        0        0        0
-3         0        0        0        0        0        0        0        0
-4         0        0        0        0        0        0        0        0
-5         0        0        0        0        0        0        0        0
-6         0        0        0        0        0        0        0        0
-7         0        0        0        0        0        0        0        0
-8         0        0        0        0        0        0        0        0
-9         0        0        0        0        0        0        0        0
-10        0        0        0        0        0        0        0        0
-   species9 species10
-1         0         0
-2         0         0
-3         0         0
-4         0         0
-5         0         0
-6         0         0
-7         0         0
-8         0         0
-9         0         0
-10        0         0</code></pre>
+<pre><code>    species1 species2 species3 species4 species5 species6 species7 species8
+247        1        1        0        0        1        1        1        0
+248        1        1        0        0        1        1        1        1
+249        1        1        0        0        1        1        1        1
+250        1        1        0        0        1        1        1        1
+251        1        1        0        0        1        1        1        1
+252        1        1        0        0        1        1        1        1
+253        1        1        0        0        1        1        1        0
+255        0        1        0        0        0        1        1        0
+288        1        1        0        0        1        1        1        1
+289        1        1        0        0        1        1        1        1
+    species9 species10
+247        1         1
+248        1         1
+249        1         1
+250        1         1
+251        1         1
+252        1         1
+253        1         1
+255        0         1
+288        1         1
+289        1         1</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can estimate Phylogenetic diversity</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>pd_islands <span class="ot">&lt;-</span> <span class="fu">pd</span>(PAM, phy)</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># we can also measure mean phylogenetic distance and mean nearest neighbour distance</span></span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>mpd_islands <span class="ot">&lt;-</span> <span class="fu">mpd</span>(PAM, <span class="fu">cophenetic</span>(phy))</span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>mntd_islands <span class="ot">&lt;-</span> <span class="fu">mntd</span>(PAM,<span class="fu">cophenetic</span>(phy))</span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="co"># link these back with the landscape by joining to the landscape lat/long</span></span>
-<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>community_phylo <span class="ot">&lt;-</span> <span class="fu">cbind</span>(lc<span class="sc">$</span>elevation[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)], pd_islands, mpd_islands, mntd_islands)</span>
-<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>sr_ras <span class="ot">&lt;-</span> <span class="fu">rast</span>(community_phylo[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"SR"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
-<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>pd_ras <span class="ot">&lt;-</span> <span class="fu">rast</span>(community_phylo[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"PD"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
-<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>mpd_ras <span class="ot">&lt;-</span> <span class="fu">rast</span>(community_phylo[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"mpd_islands"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
-<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>mntd_ras <span class="ot">&lt;-</span> <span class="fu">rast</span>(community_phylo[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"mntd_islands"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
-<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sr_ras, <span class="at">main=</span><span class="st">"Species Richness"</span>, <span class="at">colNA =</span><span class="st">"red"</span>)</span>
-<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pd_ras, <span class="at">main=</span><span class="st">"Phylogenetic Diversity"</span>)</span>
-<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mpd_ras, <span class="at">main=</span><span class="st">"Mean Phylogenetic Pairwise Distance"</span>)</span>
-<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mntd_ras, <span class="at">main=</span> <span class="st">"Mean Nearest Neighbour Phylogenetic Distance"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># these functions treat PAM rows as sites and columns as species</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># PD = total branch length represented in a site</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>pd_islands <span class="ot">&lt;-</span> <span class="fu">pd</span>(PAM, phy)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co"># MPD and MNTD summarize how related co-occurring species are</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>mpd_islands <span class="ot">&lt;-</span> <span class="fu">mpd</span>(PAM, <span class="fu">cophenetic</span>(phy))</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>mntd_islands <span class="ot">&lt;-</span> <span class="fu">mntd</span>(PAM,<span class="fu">cophenetic</span>(phy))</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co"># join the community metrics back to x/y coordinates for mapping</span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>community_phylo <span class="ot">&lt;-</span> <span class="fu">cbind</span>(lc<span class="sc">$</span>elevation[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)], pd_islands, mpd_islands, mntd_islands)</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="co"># build one raster per metric from the x/y/value columns</span></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>sr_ras <span class="ot">&lt;-</span> <span class="fu">rast</span>(community_phylo[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"SR"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>pd_ras <span class="ot">&lt;-</span> <span class="fu">rast</span>(community_phylo[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"PD"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a>mpd_ras <span class="ot">&lt;-</span> <span class="fu">rast</span>(community_phylo[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"mpd_islands"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a>mntd_ras <span class="ot">&lt;-</span> <span class="fu">rast</span>(community_phylo[, <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"mntd_islands"</span>)], <span class="at">type=</span><span class="st">"xyz"</span>)</span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sr_ras, <span class="at">main=</span><span class="st">"Species Richness"</span>, <span class="at">colNA =</span><span class="st">"red"</span>)</span>
+<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pd_ras, <span class="at">main=</span><span class="st">"Phylogenetic Diversity"</span>)</span>
+<span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mpd_ras, <span class="at">main=</span><span class="st">"Mean Phylogenetic Pairwise Distance"</span>)</span>
+<span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mntd_ras, <span class="at">main=</span> <span class="st">"Mean Nearest Neighbour Phylogenetic Distance"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -743,10 +773,11 @@ $`gen3sis-version`
 </div>
 <p>Not only did we change the overall model of evolution, we also varied key parameters for rates of niche evolution (simga_squared_t), rates of body size evolution (sigma_squared_bs), dispersal, and the temperature niche breadth (omega), the exponent of the divergence factor with temp/body size (lambda), and the divergence threshold. Load in the data and take a look, the first 6 columns are the model parameters we varied.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>sim_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"simulated_summary_statistics.csv"</span>))</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first few columns</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sim_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># each row is one simulation replicate; the first six columns are input parameters</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>sim_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"simulated_summary_statistics.csv"</span>))</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first few columns</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sim_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  divergence_threshold lambda omega sigma_squared_bs sigma_squared_t dispersal
 1                    6  3.497 0.022            0.010           0.008     2.748
@@ -889,6 +920,20 @@ $`gen3sis-version`
 </div>
 <div style="background-color: lightgreen; padding: 1px;">
 <p>❓ <strong>Question</strong> [max 5 min] Do these patterns fit our predictions? Which model effects look strongest, and which metrics seem least informative?</p>
+<details>
+<p>Think of this section in two steps:</p>
+<ol type="1">
+<li><p>Which model parameters influence biodiversity metrics?</p></li>
+<li><p>Which metrics are weakly explained and likely need nonlinear models/interactions?</p></li>
+</ol>
+<p>From the scatter/boxplot views, some associations are visible, but the strength differs by metric. In general, some metrics show clearer model separation than others. This is expected in eco-evolutionary simulations because multiple processes can produce similar emergent patterns.</p>
+<p>Useful interpretation template:</p>
+<ul>
+<li>Stronger-looking effects: metrics with clearer separation among models and tighter within-model spread.</li>
+<li>Weaker/less informative effects: metrics with substantial overlap among models and high dispersion.</li>
+<li>Key caveat: visual trends are helpful, but formal models (below) are needed to quantify effect size and uncertainty.</li>
+</ul>
+</details>
 </div>
 <p>We can also look at how some of these metrics varied with the continuous model parameters such as dispersal ability.</p>
 <div class="cell">
@@ -919,15 +964,16 @@ $`gen3sis-version`
 </div>
 <p>To perform a simple kind of sensitivity test we might ask how each of the model parameters predicts linear changes in the distribution of a biodiversity patterns using a multiple regression model. One example where we have a good idea of what the relationship should be is the how variance in the distribution of temperature niches across species (e.g., skewness of the distribution) relates to model paramaters. We expect that this should scale with the rate of rate of temperature niche evolution - faster rates of change = more variation in the trait = more kutosis.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first scale parameters to be in the same units</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>sim_data_scaled <span class="ot">&lt;-</span> sim_data</span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>sim_data_scaled[,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="fu">scale</span>(sim_data_scaled[,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>] )</span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="co"># fit the multiple regression</span></span>
-<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>lm1  <span class="ot">&lt;-</span> <span class="fu">lm</span>(temp_kurtosis <span class="sc">~</span> divergence_threshold<span class="sc">+</span>lambda<span class="sc">+</span>omega<span class="sc">+</span>sigma_squared_bs<span class="sc">+</span>sigma_squared_t<span class="sc">+</span>dispersal, <span class="at">data=</span>sim_data_scaled)</span>
-<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a><span class="co"># look at model coefficients</span></span>
-<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># copy the data and standardize only the six input parameters</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this keeps coefficient magnitudes comparable across predictors</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>sim_data_scaled <span class="ot">&lt;-</span> sim_data</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>sim_data_scaled[,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="fu">scale</span>(sim_data_scaled[,<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>] )</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="co"># fit the multiple regression</span></span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>lm1  <span class="ot">&lt;-</span> <span class="fu">lm</span>(temp_kurtosis <span class="sc">~</span> divergence_threshold<span class="sc">+</span>lambda<span class="sc">+</span>omega<span class="sc">+</span>sigma_squared_bs<span class="sc">+</span>sigma_squared_t<span class="sc">+</span>dispersal, <span class="at">data=</span>sim_data_scaled)</span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a><span class="co"># look at model coefficients</span></span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -957,6 +1003,29 @@ F-statistic: 27.68 on 6 and 1377 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div style="background-color: lightgreen; padding: 1px;">
 <p>🏋💻 <strong>Exercise</strong> [max 10 min] Interpret the regression output for <code>lm1</code>. Are our expectations met for temperature niche evolution, and what surprises do you see?</p>
+<details>
+<p><code>lm1</code> asks whether model parameters predict <code>temp_kurtosis</code>. - Kurtosis captures tail heaviness (how much probability is in extreme values). - Higher kurtosis means more extreme trait values relative to a normal-like distribution.</p>
+<p>Why scale parameters first?</p>
+<ul>
+<li><code>sim_data_scaled[,1:6] &lt;- scale(sim_data_scaled[,1:6])</code></li>
+<li>This puts predictors on comparable units (mean 0, sd 1), so coefficient magnitudes are interpretable side-by-side.</li>
+</ul>
+<p>How to interpret coefficients:</p>
+<ul>
+<li>A positive coefficient means <code>temp_kurtosis</code> tends to increase as that parameter increases (in standard deviation units).</li>
+<li>A negative coefficient means the opposite.</li>
+<li>P-values indicate evidence for a linear effect, conditional on the other predictors.</li>
+</ul>
+<p>Expectation check:</p>
+<ul>
+<li>If <code>sigma_squared_t</code> (rate of temperature niche evolution) is positive and supported, that matches the biological expectation: faster niche evolution can generate more extreme trait values and heavier tails in the niche distribution.</li>
+</ul>
+<p>What can be surprising:</p>
+<ul>
+<li>Some parameters may be weak/non-significant even if biologically important.</li>
+<li><code>R^2</code> may be modest. This is common in complex systems where nonlinearities, interactions, and stochasticity drive much of the variation.</li>
+</ul>
+</details>
 </div>
 <p>Let’s try a few other biodiversity patterns where the predictions are less clear.</p>
 <div class="cell">
@@ -1073,88 +1142,139 @@ F-statistic: 36.99 on 6 and 1377 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co"># get just the biodiversity metrics</span></span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co"># keep the class label `m` plus the biodiversity summary statistics</span></span>
 <span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>sim_data_ms <span class="ot">&lt;-</span> sim_data[,<span class="dv">7</span><span class="sc">:</span><span class="fu">ncol</span>(sim_data)]</span>
 <span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a><span class="co"># remove MRDs variables from sim data</span></span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a><span class="co"># drop the MRD summary variables to match the teaching example feature set</span></span>
 <span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a>sim_data_ms <span class="ot">&lt;-</span> sim_data_ms[, <span class="sc">-</span><span class="fu">which</span>(<span class="fu">grepl</span>(<span class="st">"MRDs"</span>,<span class="fu">colnames</span>(sim_data_ms)))]</span>
 <span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a><span class="co"># partition into a training and testing dataset for cross validation</span></span>
-<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a>train_index <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">createDataPartition</span>(sim_data_ms<span class="sc">$</span>m, <span class="at">p =</span> .<span class="dv">66</span>, <span class="at">list =</span> <span class="cn">FALSE</span>,  <span class="at">times =</span> <span class="dv">1</span>)</span>
-<span id="cb73-16"><a href="#cb73-16" aria-hidden="true" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> sim_data_ms[ train_index ,]</span>
-<span id="cb73-17"><a href="#cb73-17" aria-hidden="true" tabindex="-1"></a>test_data  <span class="ot">&lt;-</span> sim_data_ms[<span class="sc">-</span>train_index ,]</span>
-<span id="cb73-18"><a href="#cb73-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-19"><a href="#cb73-19" aria-hidden="true" tabindex="-1"></a><span class="co"># preprocess values - we will scale and center values</span></span>
-<span id="cb73-20"><a href="#cb73-20" aria-hidden="true" tabindex="-1"></a>preprocessed_values <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">preProcess</span>(train_data, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">"center"</span>, <span class="st">"scale"</span>))</span>
-<span id="cb73-21"><a href="#cb73-21" aria-hidden="true" tabindex="-1"></a>train_transformed   <span class="ot">&lt;-</span> <span class="fu">predict</span>(preprocessed_values, train_data)</span>
-<span id="cb73-22"><a href="#cb73-22" aria-hidden="true" tabindex="-1"></a>test_transformed    <span class="ot">&lt;-</span> <span class="fu">predict</span>(preprocessed_values, test_data )</span>
+<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a><span class="co"># reuse the course-wide seed so this split stays reproducible across renders</span></span>
+<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(course_seed)</span>
+<span id="cb73-16"><a href="#cb73-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-17"><a href="#cb73-17" aria-hidden="true" tabindex="-1"></a><span class="co"># create a stratified split based on the model label `m`</span></span>
+<span id="cb73-18"><a href="#cb73-18" aria-hidden="true" tabindex="-1"></a><span class="co"># p = .66 keeps about two thirds of rows for training</span></span>
+<span id="cb73-19"><a href="#cb73-19" aria-hidden="true" tabindex="-1"></a><span class="co"># list = FALSE returns integer row indices, and times = 1 makes one split</span></span>
+<span id="cb73-20"><a href="#cb73-20" aria-hidden="true" tabindex="-1"></a>train_index <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">createDataPartition</span>(sim_data_ms[[<span class="st">"m"</span>]], <span class="at">p =</span> .<span class="dv">66</span>, <span class="at">list =</span> <span class="cn">FALSE</span>,  <span class="at">times =</span> <span class="dv">1</span>)</span>
+<span id="cb73-21"><a href="#cb73-21" aria-hidden="true" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> sim_data_ms[ train_index ,]</span>
+<span id="cb73-22"><a href="#cb73-22" aria-hidden="true" tabindex="-1"></a>test_data  <span class="ot">&lt;-</span> sim_data_ms[<span class="sc">-</span>train_index ,]</span>
 <span id="cb73-23"><a href="#cb73-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-24"><a href="#cb73-24" aria-hidden="true" tabindex="-1"></a><span class="co"># configure the cross-validation paramaters</span></span>
-<span id="cb73-25"><a href="#cb73-25" aria-hidden="true" tabindex="-1"></a>train_control <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">trainControl</span>( <span class="at">method =</span> <span class="st">"repeatedcv"</span>, <span class="at">number =</span> <span class="dv">10</span>, <span class="at">repeats =</span> <span class="dv">10</span>, <span class="at">classProbs =</span> <span class="cn">TRUE</span>, <span class="at">savePredictions =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb73-26"><a href="#cb73-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-27"><a href="#cb73-27" aria-hidden="true" tabindex="-1"></a><span class="co"># FIT MODELS</span></span>
-<span id="cb73-28"><a href="#cb73-28" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">formula</span>(<span class="fu">paste</span>(<span class="st">"m ~ "</span>, <span class="fu">paste</span>(<span class="fu">names</span>(sim_data_ms)[<span class="dv">2</span><span class="sc">:</span><span class="fu">c</span>(<span class="fu">length</span>(<span class="fu">names</span>(sim_data_ms)))], <span class="at">collapse=</span><span class="st">" + "</span>)))</span>
-<span id="cb73-29"><a href="#cb73-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-30"><a href="#cb73-30" aria-hidden="true" tabindex="-1"></a><span class="do">## LINEAR DISCRIMINANT ANALYSIS</span></span>
-<span id="cb73-31"><a href="#cb73-31" aria-hidden="true" tabindex="-1"></a><span class="co"># note we'll run an LDA because they're quick - many other kinds of models to choose from </span></span>
-<span id="cb73-32"><a href="#cb73-32" aria-hidden="true" tabindex="-1"></a>lda_train        <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">train</span>(f1, <span class="at">data=</span>train_transformed, <span class="at">method =</span> <span class="st">"lda"</span>, <span class="at">trControl =</span> train_control, <span class="at">verbose =</span> T)</span>
-<span id="cb73-33"><a href="#cb73-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-34"><a href="#cb73-34" aria-hidden="true" tabindex="-1"></a><span class="co">#predict on test data</span></span>
-<span id="cb73-35"><a href="#cb73-35" aria-hidden="true" tabindex="-1"></a>lda_test        <span class="ot">&lt;-</span> <span class="fu">predict</span>(lda_train, test_transformed)</span>
-<span id="cb73-36"><a href="#cb73-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-37"><a href="#cb73-37" aria-hidden="true" tabindex="-1"></a><span class="co"># classification accuracy</span></span>
-<span id="cb73-38"><a href="#cb73-38" aria-hidden="true" tabindex="-1"></a>lda_cm        <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(<span class="at">data =</span> lda_test, <span class="at">reference =</span> <span class="fu">as.factor</span>(test_transformed<span class="sc">$</span>m), <span class="at">mode =</span> <span class="st">"prec_recall"</span>)</span>
+<span id="cb73-24"><a href="#cb73-24" aria-hidden="true" tabindex="-1"></a><span class="co"># learn centering/scaling from the training set only, then apply the same transform to both sets</span></span>
+<span id="cb73-25"><a href="#cb73-25" aria-hidden="true" tabindex="-1"></a>preprocessed_values <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">preProcess</span>(train_data, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">"center"</span>, <span class="st">"scale"</span>))</span>
+<span id="cb73-26"><a href="#cb73-26" aria-hidden="true" tabindex="-1"></a>train_transformed   <span class="ot">&lt;-</span> <span class="fu">predict</span>(preprocessed_values, train_data)</span>
+<span id="cb73-27"><a href="#cb73-27" aria-hidden="true" tabindex="-1"></a>test_transformed    <span class="ot">&lt;-</span> <span class="fu">predict</span>(preprocessed_values, test_data )</span>
+<span id="cb73-28"><a href="#cb73-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-29"><a href="#cb73-29" aria-hidden="true" tabindex="-1"></a><span class="co"># repeated 10-fold CV estimates expected training performance during model fitting</span></span>
+<span id="cb73-30"><a href="#cb73-30" aria-hidden="true" tabindex="-1"></a><span class="co"># class probabilities are kept so we can inspect uncertainty later</span></span>
+<span id="cb73-31"><a href="#cb73-31" aria-hidden="true" tabindex="-1"></a>train_control <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">trainControl</span>(</span>
+<span id="cb73-32"><a href="#cb73-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"repeatedcv"</span>,</span>
+<span id="cb73-33"><a href="#cb73-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">number =</span> <span class="dv">10</span>,</span>
+<span id="cb73-34"><a href="#cb73-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">repeats =</span> <span class="dv">10</span>,</span>
+<span id="cb73-35"><a href="#cb73-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">classProbs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb73-36"><a href="#cb73-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">savePredictions =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb73-37"><a href="#cb73-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">allowParallel =</span> <span class="cn">FALSE</span></span>
+<span id="cb73-38"><a href="#cb73-38" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb73-39"><a href="#cb73-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-40"><a href="#cb73-40" aria-hidden="true" tabindex="-1"></a><span class="co"># how well did the model perform</span></span>
-<span id="cb73-41"><a href="#cb73-41" aria-hidden="true" tabindex="-1"></a>lda_cm </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb73-40"><a href="#cb73-40" aria-hidden="true" tabindex="-1"></a><span class="co"># use all biodiversity metrics as predictors of the generating model `m`</span></span>
+<span id="cb73-41"><a href="#cb73-41" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">formula</span>(<span class="fu">paste</span>(<span class="st">"m ~ "</span>, <span class="fu">paste</span>(<span class="fu">names</span>(sim_data_ms)[<span class="dv">2</span><span class="sc">:</span><span class="fu">c</span>(<span class="fu">length</span>(<span class="fu">names</span>(sim_data_ms)))], <span class="at">collapse=</span><span class="st">" + "</span>)))</span>
+<span id="cb73-42"><a href="#cb73-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-43"><a href="#cb73-43" aria-hidden="true" tabindex="-1"></a><span class="do">## LINEAR DISCRIMINANT ANALYSIS</span></span>
+<span id="cb73-44"><a href="#cb73-44" aria-hidden="true" tabindex="-1"></a><span class="co"># note we'll run an LDA because they're quick - many other kinds of models to choose from </span></span>
+<span id="cb73-45"><a href="#cb73-45" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(course_seed)</span>
+<span id="cb73-46"><a href="#cb73-46" aria-hidden="true" tabindex="-1"></a>lda_train        <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">train</span>(f1, <span class="at">data=</span>train_transformed, <span class="at">method =</span> <span class="st">"lda"</span>, <span class="at">trControl =</span> train_control, <span class="at">verbose =</span> T)</span>
+<span id="cb73-47"><a href="#cb73-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-48"><a href="#cb73-48" aria-hidden="true" tabindex="-1"></a><span class="co"># evaluate on the held-out test set that was not used during fitting</span></span>
+<span id="cb73-49"><a href="#cb73-49" aria-hidden="true" tabindex="-1"></a>lda_test        <span class="ot">&lt;-</span> <span class="fu">predict</span>(lda_train, test_transformed)</span>
+<span id="cb73-50"><a href="#cb73-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-51"><a href="#cb73-51" aria-hidden="true" tabindex="-1"></a><span class="co"># compute one-vs-all precision/recall metrics for each class</span></span>
+<span id="cb73-52"><a href="#cb73-52" aria-hidden="true" tabindex="-1"></a>lda_cm        <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(<span class="at">data =</span> lda_test, <span class="at">reference =</span> <span class="fu">as.factor</span>(test_transformed[[<span class="st">"m"</span>]]), <span class="at">mode =</span> <span class="st">"prec_recall"</span>)</span>
+<span id="cb73-53"><a href="#cb73-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-54"><a href="#cb73-54" aria-hidden="true" tabindex="-1"></a><span class="co"># how well did the model perform</span></span>
+<span id="cb73-55"><a href="#cb73-55" aria-hidden="true" tabindex="-1"></a>lda_cm </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confusion Matrix and Statistics
 
           Reference
-Prediction m0 m1 m2 m3
-        m0 96 15  4  9
-        m1  6 88  1  8
-        m2  2  1 92 27
-        m3 13 12 20 73
+Prediction  m0  m1  m2  m3
+        m0 102  13   1   7
+        m1   5  92   4   4
+        m2   3   1  83  30
+        m3   7  10  29  76
 
 Overall Statistics
                                           
-               Accuracy : 0.7473          
-                 95% CI : (0.7053, 0.7861)
+               Accuracy : 0.7559          
+                 95% CI : (0.7143, 0.7942)
     No Information Rate : 0.2505          
     P-Value [Acc &gt; NIR] : &lt;2e-16          
                                           
-                  Kappa : 0.6631          
+                  Kappa : 0.6745          
                                           
- Mcnemar's Test P-Value : 0.3123          
+ Mcnemar's Test P-Value : 0.1768          
 
 Statistics by Class:
 
                      Class: m0 Class: m1 Class: m2 Class: m3
-Precision               0.7742    0.8544    0.7541    0.6186
-Recall                  0.8205    0.7586    0.7863    0.6239
-F1                      0.7967    0.8037    0.7699    0.6213
+Precision               0.8293    0.8762    0.7094    0.6230
+Recall                  0.8718    0.7931    0.7094    0.6496
+F1                      0.8500    0.8326    0.7094    0.6360
 Prevalence              0.2505    0.2484    0.2505    0.2505
-Detection Rate          0.2056    0.1884    0.1970    0.1563
-Detection Prevalence    0.2655    0.2206    0.2612    0.2527
-Balanced Accuracy       0.8703    0.8579    0.8503    0.7477</code></pre>
+Detection Rate          0.2184    0.1970    0.1777    0.1627
+Detection Prevalence    0.2634    0.2248    0.2505    0.2612
+Balanced Accuracy       0.9059    0.8780    0.8061    0.7591</code></pre>
 </div>
+</div>
+<div style="border-left: 4px solid #4C78A8; background-color: #F4F8FB; padding: 0.6rem 0.8rem; margin-bottom: 1rem;">
+<p><strong>Quick guide to the class metrics</strong></p>
+<p>These are reported separately for each model class (<code>m0</code>, <code>m1</code>, <code>m2</code>, <code>m3</code>), treating one class at a time.</p>
+<ul>
+<li><code>Precision</code>: Of the cases predicted to be this class, how many were correct?</li>
+<li><code>Recall</code>: Of the cases that truly were this class, how many did the model recover?</li>
+<li><code>F1</code>: The harmonic mean of precision and recall; useful when you want both to be high.</li>
+<li><code>Prevalence</code>: The true proportion of this class in the test data.</li>
+<li><code>Detection Rate</code>: The proportion of all cases that were correctly assigned to this class.</li>
+<li><code>Detection Prevalence</code>: The proportion of all cases that the model predicted as this class.</li>
+<li><code>Balanced Accuracy</code>: The average of sensitivity and specificity; useful when comparing classes fairly.</li>
+</ul>
 </div>
 <div style="background-color: lightgreen; padding: 1px;">
 <p>❓ <strong>Question</strong> [max 5 min] What is the overall classification accuracy, and are some models predicted better than others?</p>
+<details>
+<p>From the confusion matrix output shown here:</p>
+<ul>
+<li>Overall accuracy: <code>0.7559</code> (~75.59%)</li>
+<li>95% CI: <code>(0.7143, 0.7942)</code></li>
+<li>No-information rate: <code>0.2505</code> (chance level with 4 balanced classes)</li>
+</ul>
+<p>So the classifier performs far above chance.</p>
+<p>Are some models predicted better?</p>
+<ul>
+<li>Yes. Using F1 score (higher is better):
+<ul>
+<li><code>m0</code>: <code>0.8500</code> (best overall in this seeded run)</li>
+<li><code>m1</code>: <code>0.8326</code></li>
+<li><code>m2</code>: <code>0.7094</code></li>
+<li><code>m3</code>: <code>0.6360</code> (hardest)</li>
+</ul></li>
+</ul>
+<p>If you look at other metrics, <code>m1</code> has the highest precision (<code>0.8762</code>), while <code>m0</code> has the highest recall (<code>0.8718</code>) and balanced accuracy (<code>0.9059</code>).</p>
+<p>Main confusion pattern:</p>
+<ul>
+<li><code>m2</code> and <code>m3</code> are still the most frequently confused pair, suggesting these two models can produce similar biodiversity-statistic signatures.</li>
+</ul>
+</details>
 </div>
 <p>Now we’ll use this model to predict the possible model of diversification in orders of terrestrial vertebrates.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first subset and clean the colnames of the empirical data</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the empirical vertebrate summary statistics</span></span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>empirical_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"order_empirical_summary_statistics.csv"</span>))</span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="co"># just want to look at diverse clades</span></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="co"># restrict to clades with enough species for the summaries to be informative</span></span>
 <span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>empirical_data <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(empirical_data[<span class="fu">which</span>(empirical_data<span class="sc">$</span>n_species <span class="sc">&gt;=</span> <span class="dv">20</span>),])</span>
 <span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a><span class="co"># make labels lower case</span></span>
 <span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a>empirical_data<span class="sc">$</span>taxon <span class="ot">&lt;-</span> <span class="fu">tolower</span>(empirical_data<span class="sc">$</span>taxon)</span>
 <span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a><span class="co"># clean up a few names because I'm a grub</span></span>
+<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a><span class="co"># rename columns so the empirical data uses the same feature names as the simulation table</span></span>
 <span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_data)[<span class="fu">which</span>(<span class="fu">colnames</span>(empirical_data) <span class="sc">==</span> <span class="st">"taxon"</span>)] <span class="ot">&lt;-</span> <span class="st">"m"</span></span>
 <span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_data)[<span class="fu">which</span>(<span class="fu">colnames</span>(empirical_data)<span class="sc">==</span><span class="st">"rs_kutosis"</span>)] <span class="ot">&lt;-</span> <span class="st">"rs_kurtosis"</span></span>
 <span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_data)[<span class="fu">which</span>(<span class="fu">colnames</span>(empirical_data)<span class="sc">==</span><span class="st">"n_species"</span>)] <span class="ot">&lt;-</span> <span class="st">"n_extant_diversity"</span></span>
@@ -1166,7 +1286,7 @@ Balanced Accuracy       0.8703    0.8579    0.8503    0.7477</code></pre>
 <span id="cb75-19"><a href="#cb75-19" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(empirical_data)[<span class="fu">which</span>(<span class="fu">colnames</span>(empirical_data) <span class="sc">==</span> <span class="st">"gamma_mcc"</span>)] <span class="ot">&lt;-</span> <span class="st">"gamma"</span></span>
 <span id="cb75-20"><a href="#cb75-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb75-21"><a href="#cb75-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-22"><a href="#cb75-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ok these should be able to be matched now</span></span>
+<span id="cb75-22"><a href="#cb75-22" aria-hidden="true" tabindex="-1"></a><span class="co"># keep only features shared with the simulated training data, then match the same column order</span></span>
 <span id="cb75-23"><a href="#cb75-23" aria-hidden="true" tabindex="-1"></a>empirical_data <span class="ot">&lt;-</span> empirical_data[, <span class="fu">which</span>(<span class="fu">colnames</span>(empirical_data) <span class="sc">%in%</span> <span class="fu">colnames</span>(sim_data_ms))]</span>
 <span id="cb75-24"><a href="#cb75-24" aria-hidden="true" tabindex="-1"></a>empirical_subset <span class="ot">&lt;-</span> empirical_data[, <span class="fu">match</span>(<span class="fu">colnames</span>(sim_data_ms), <span class="fu">colnames</span>(empirical_data))]</span>
 <span id="cb75-25"><a href="#cb75-25" aria-hidden="true" tabindex="-1"></a></span>
@@ -1185,137 +1305,160 @@ Balanced Accuracy       0.8703    0.8579    0.8503    0.7477</code></pre>
 [16] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 [31] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Process empirical data in the same way as for the simulated data</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># apply the exact same preprocessing learned from the training set</span></span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>simulated_transformed <span class="ot">&lt;-</span> <span class="fu">predict</span>(preprocessed_values, sim_data_ms )</span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>empirical_transformed <span class="ot">&lt;-</span> <span class="fu">predict</span>(preprocessed_values, empirical_subset )</span>
 <span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>model_set <span class="ot">&lt;-</span> <span class="fu">list</span>(lda_train)</span>
-<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a><span class="co"># predict on empirical</span></span>
-<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a>class_predictions   <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_set, <span class="at">newdata =</span> empirical_transformed, <span class="at">type =</span> <span class="st">"raw"</span>, <span class="at">na.action =</span> na.omit)</span>
-<span id="cb81-9"><a href="#cb81-9" aria-hidden="true" tabindex="-1"></a>class_probabilities <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_set, <span class="at">newdata =</span> empirical_transformed, <span class="at">type =</span> <span class="st">"prob"</span>, <span class="at">na.action =</span> na.omit)</span>
-<span id="cb81-10"><a href="#cb81-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-11"><a href="#cb81-11" aria-hidden="true" tabindex="-1"></a><span class="co"># sum the classes</span></span>
-<span id="cb81-12"><a href="#cb81-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">do.call</span>(rbind, class_predictions)) <span class="co"># </span><span class="al">TODO</span><span class="co"> define class prediction table</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a><span class="co"># keep the interface general so more than one fitted model could be compared later</span></span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>model_set <span class="ot">&lt;-</span> <span class="fu">list</span>(lda_train)</span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a><span class="co"># predict on empirical</span></span>
+<span id="cb81-9"><a href="#cb81-9" aria-hidden="true" tabindex="-1"></a>class_predictions   <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_set, <span class="at">newdata =</span> empirical_transformed, <span class="at">type =</span> <span class="st">"raw"</span>, <span class="at">na.action =</span> na.omit)</span>
+<span id="cb81-10"><a href="#cb81-10" aria-hidden="true" tabindex="-1"></a>class_probabilities <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_set, <span class="at">newdata =</span> empirical_transformed, <span class="at">type =</span> <span class="st">"prob"</span>, <span class="at">na.action =</span> na.omit)</span>
+<span id="cb81-11"><a href="#cb81-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-12"><a href="#cb81-12" aria-hidden="true" tabindex="-1"></a><span class="co"># count how many empirical orders are assigned to each generating model</span></span>
+<span id="cb81-13"><a href="#cb81-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">do.call</span>(rbind, class_predictions)) <span class="co"># </span><span class="al">TODO</span><span class="co"> define class prediction table</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 4 1 1 1 1 1 4 1 4 4 4 4 1 4 1 4 1 1 4 2 4 1 4 1 4 1 1 1 4 4 1 1 4 4 3 4 1 1
-[39] 1 4 1 4 1 3 4 1 1 4</code></pre>
+<pre><code> [1] 3 2 2 2 1 2 3 3 3 3 3 3 2 3 2 3 2 2 3 2 3 1 3 2 3 2 2 2 3 3 2 2 3 2 3 3 1 2
+[39] 2 4 1 3 2 3 3 2 2 3</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now we can see which model is the most supported for each order</span></span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(empirical_transformed<span class="sc">$</span>m, <span class="fu">as.character</span>(class_predictions[[<span class="dv">1</span>]]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      [,1]                [,2]
- [1,] "serpentes"         "m3"
- [2,] "anguimorpha"       "m0"
- [3,] "dibamia"           "m0"
- [4,] "gekkota"           "m0"
+ [1,] "serpentes"         "m2"
+ [2,] "anguimorpha"       "m1"
+ [3,] "dibamia"           "m1"
+ [4,] "gekkota"           "m1"
  [5,] "iguania"           "m0"
- [6,] "lacertoidea"       "m0"
- [7,] "scincoidea"        "m3"
- [8,] "afrosoricida"      "m0"
- [9,] "carnivora"         "m3"
-[10,] "cetartiodactyla"   "m3"
-[11,] "chiroptera"        "m3"
-[12,] "cingulata"         "m3"
-[13,] "dasyuromorphia"    "m0"
-[14,] "didelphimorphia"   "m3"
-[15,] "diprotodontia"     "m0"
-[16,] "eulipotyphla"      "m3"
-[17,] "lagomorpha"        "m0"
-[18,] "primates"          "m0"
-[19,] "rodentia"          "m3"
+ [6,] "lacertoidea"       "m1"
+ [7,] "scincoidea"        "m2"
+ [8,] "afrosoricida"      "m2"
+ [9,] "carnivora"         "m2"
+[10,] "cetartiodactyla"   "m2"
+[11,] "chiroptera"        "m2"
+[12,] "cingulata"         "m2"
+[13,] "dasyuromorphia"    "m1"
+[14,] "didelphimorphia"   "m2"
+[15,] "diprotodontia"     "m1"
+[16,] "eulipotyphla"      "m2"
+[17,] "lagomorpha"        "m1"
+[18,] "primates"          "m1"
+[19,] "rodentia"          "m2"
 [20,] "scandentia"        "m1"
-[21,] "accipitriformes"   "m3"
+[21,] "accipitriformes"   "m2"
 [22,] "anseriformes"      "m0"
-[23,] "apodiformes"       "m3"
-[24,] "bucerotiformes"    "m0"
-[25,] "caprimulgiformes"  "m3"
-[26,] "charadriiformes"   "m0"
-[27,] "columbiformes"     "m0"
-[28,] "coraciiformes"     "m0"
-[29,] "cuculiformes"      "m3"
-[30,] "falconiformes"     "m3"
-[31,] "galliformes"       "m0"
-[32,] "gruiformes"        "m0"
-[33,] "musophagiformes"   "m3"
-[34,] "otidiformes"       "m3"
+[23,] "apodiformes"       "m2"
+[24,] "bucerotiformes"    "m1"
+[25,] "caprimulgiformes"  "m2"
+[26,] "charadriiformes"   "m1"
+[27,] "columbiformes"     "m1"
+[28,] "coraciiformes"     "m1"
+[29,] "cuculiformes"      "m2"
+[30,] "falconiformes"     "m2"
+[31,] "galliformes"       "m1"
+[32,] "gruiformes"        "m1"
+[33,] "musophagiformes"   "m2"
+[34,] "otidiformes"       "m1"
 [35,] "passeriformes"     "m2"
-[36,] "pelecaniformes"    "m3"
+[36,] "pelecaniformes"    "m2"
 [37,] "piciformes"        "m0"
-[38,] "procellariiformes" "m0"
-[39,] "psittaciformes"    "m0"
+[38,] "procellariiformes" "m1"
+[39,] "psittaciformes"    "m1"
 [40,] "strigiformes"      "m3"
 [41,] "suliformes"        "m0"
-[42,] "tinamiformes"      "m3"
-[43,] "trogoniformes"     "m0"
+[42,] "tinamiformes"      "m2"
+[43,] "trogoniformes"     "m1"
 [44,] "anura"             "m2"
-[45,] "caudata"           "m3"
-[46,] "gymnophiona"       "m0"
-[47,] "crocodylia"        "m0"
-[48,] "testudines"        "m3"</code></pre>
+[45,] "caudata"           "m2"
+[46,] "gymnophiona"       "m1"
+[47,] "crocodylia"        "m1"
+[48,] "testudines"        "m2"</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(class_predictions[[<span class="dv">1</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 m0 m1 m2 m3 
-24  1  2 21 </code></pre>
+ 4 21 22  1 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># can also look at the variation in this</span></span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(empirical_transformed<span class="sc">$</span>m, <span class="fu">round</span>(class_probabilities[[<span class="dv">1</span>]], <span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   empirical_transformed$m    m0    m1    m2    m3
-1                serpentes 0.000 0.000 0.234 0.766
-2              anguimorpha 1.000 0.000 0.000 0.000
-3                  dibamia 1.000 0.000 0.000 0.000
-4                  gekkota 0.872 0.128 0.000 0.000
-5                  iguania 1.000 0.000 0.000 0.000
-6              lacertoidea 1.000 0.000 0.000 0.000
-7               scincoidea 0.000 0.000 0.000 1.000
-8             afrosoricida 0.954 0.046 0.000 0.000
-9                carnivora 0.000 0.000 0.000 1.000
-10         cetartiodactyla 0.000 0.000 0.000 1.000
-11              chiroptera 0.000 0.000 0.032 0.968
-12               cingulata 0.000 0.000 0.000 1.000
-13          dasyuromorphia 1.000 0.000 0.000 0.000
-15         didelphimorphia 0.000 0.000 0.000 1.000
-16           diprotodontia 1.000 0.000 0.000 0.000
-17            eulipotyphla 0.000 0.000 0.000 1.000
-19              lagomorpha 1.000 0.000 0.000 0.000
-28                primates 1.000 0.000 0.000 0.000
-30                rodentia 0.000 0.000 0.000 1.000
-31              scandentia 0.000 0.999 0.000 0.001
-33         accipitriformes 0.000 0.000 0.000 1.000
-34            anseriformes 0.995 0.005 0.000 0.000
-35             apodiformes 0.000 0.000 0.000 1.000
-37          bucerotiformes 1.000 0.000 0.000 0.000
-38        caprimulgiformes 0.024 0.002 0.394 0.580
-41         charadriiformes 0.984 0.016 0.000 0.000
-44           columbiformes 1.000 0.000 0.000 0.000
-45           coraciiformes 1.000 0.000 0.000 0.000
-46            cuculiformes 0.000 0.000 0.000 1.000
-48           falconiformes 0.000 0.000 0.000 1.000
-49             galliformes 1.000 0.000 0.000 0.000
-51              gruiformes 1.000 0.000 0.000 0.000
-53         musophagiformes 0.000 0.000 0.000 1.000
-54             otidiformes 0.000 0.000 0.000 1.000
-55           passeriformes 0.000 0.000 0.951 0.049
-56          pelecaniformes 0.000 0.000 0.000 1.000
-59              piciformes 0.534 0.009 0.062 0.395
-61       procellariiformes 0.997 0.003 0.000 0.000
-62          psittaciformes 0.965 0.035 0.000 0.000
-66            strigiformes 0.009 0.011 0.139 0.841
-67              suliformes 1.000 0.000 0.000 0.000
-68            tinamiformes 0.000 0.000 0.000 1.000
-69           trogoniformes 0.575 0.409 0.000 0.016
-70                   anura 0.000 0.000 0.913 0.087
-71                 caudata 0.000 0.000 0.000 1.000
-72             gymnophiona 1.000 0.000 0.000 0.000
-73              crocodylia 1.000 0.000 0.000 0.000
-74              testudines 0.000 0.000 0.000 1.000</code></pre>
+1                serpentes 0.000 0.000 1.000 0.000
+2              anguimorpha 0.000 1.000 0.000 0.000
+3                  dibamia 0.000 1.000 0.000 0.000
+4                  gekkota 0.000 1.000 0.000 0.000
+5                  iguania 0.935 0.001 0.062 0.002
+6              lacertoidea 0.000 1.000 0.000 0.000
+7               scincoidea 0.000 0.000 1.000 0.000
+8             afrosoricida 0.024 0.000 0.976 0.000
+9                carnivora 0.000 0.000 1.000 0.000
+10         cetartiodactyla 0.000 0.000 1.000 0.000
+11              chiroptera 0.000 0.000 1.000 0.000
+12               cingulata 0.000 0.000 1.000 0.000
+13          dasyuromorphia 0.000 1.000 0.000 0.000
+15         didelphimorphia 0.000 0.000 1.000 0.000
+16           diprotodontia 0.000 1.000 0.000 0.000
+17            eulipotyphla 0.000 0.000 1.000 0.000
+19              lagomorpha 0.000 1.000 0.000 0.000
+28                primates 0.000 1.000 0.000 0.000
+30                rodentia 0.000 0.000 1.000 0.000
+31              scandentia 0.069 0.931 0.000 0.000
+33         accipitriformes 0.000 0.000 1.000 0.000
+34            anseriformes 0.815 0.005 0.173 0.006
+35             apodiformes 0.000 0.000 1.000 0.000
+37          bucerotiformes 0.000 1.000 0.000 0.000
+38        caprimulgiformes 0.000 0.000 0.989 0.011
+41         charadriiformes 0.003 0.997 0.000 0.000
+44           columbiformes 0.000 1.000 0.000 0.000
+45           coraciiformes 0.000 1.000 0.000 0.000
+46            cuculiformes 0.052 0.013 0.911 0.024
+48           falconiformes 0.000 0.000 1.000 0.000
+49             galliformes 0.000 1.000 0.000 0.000
+51              gruiformes 0.000 1.000 0.000 0.000
+53         musophagiformes 0.000 0.000 1.000 0.000
+54             otidiformes 0.051 0.795 0.006 0.149
+55           passeriformes 0.000 0.000 1.000 0.000
+56          pelecaniformes 0.000 0.000 1.000 0.000
+59              piciformes 0.993 0.000 0.006 0.000
+61       procellariiformes 0.000 1.000 0.000 0.000
+62          psittaciformes 0.000 1.000 0.000 0.000
+66            strigiformes 0.000 0.157 0.000 0.843
+67              suliformes 0.997 0.003 0.000 0.000
+68            tinamiformes 0.000 0.000 1.000 0.000
+69           trogoniformes 0.000 1.000 0.000 0.000
+70                   anura 0.001 0.000 0.994 0.005
+71                 caudata 0.000 0.000 1.000 0.000
+72             gymnophiona 0.000 1.000 0.000 0.000
+73              crocodylia 0.000 1.000 0.000 0.000
+74              testudines 0.000 0.000 1.000 0.000</code></pre>
 </div>
 </div>
 <div style="background-color: lightgreen; padding: 1px;">
 <p>🏋💻 <strong>Exercise</strong> [max 10 min] Summarize which diversification models are most supported across vertebrate orders and propose one biological interpretation.</p>
+<details>
+<p>Use this workflow:</p>
+<ol type="1">
+<li><p>Count predicted classes with <code>table(class_predictions[[1]])</code>.</p></li>
+<li><p>Inspect confidence with <code>class_probabilities[[1]]</code>.</p></li>
+<li><p>Report both dominant classes and uncertainty.</p></li>
+</ol>
+<p>Example interpretation template:</p>
+<ul>
+<li>If one model is most frequent across orders, that model has strongest support overall.</li>
+<li>If many clades have split probabilities across two models, those models are not well-separated for those clades.</li>
+</ul>
+<p>Biological interpretation (example):</p>
+<ul>
+<li>If <code>m3</code> (joint temperature + body size effects) dominates, this supports a multi-driver view of diversification where interacting mechanisms shape observed biodiversity patterns.</li>
+<li>If <code>m2</code> is common in some groups, body-size-linked divergence may be especially important in those clades.</li>
+</ul>
+<p>Important caveat:</p>
+<ul>
+<li>Model predictions are probabilistic, not absolute. Always report class probabilities, not only top-1 classes.</li>
+</ul>
+</details>
 </div>
 
 

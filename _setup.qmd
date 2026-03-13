@@ -7,6 +7,10 @@ required_packages <- c(
   "gen3sis", "terra", "ape", "here", "phytools", "picante", "ggplot2"
 )
 
+# Single RNG seed reused across the course so stochastic examples render consistently.
+course_seed <- 20260312
+set.seed(course_seed)
+
 missing_packages <- required_packages[
   !vapply(required_packages, requireNamespace, logical(1), quietly = TRUE)
 ]
