@@ -32,10 +32,8 @@ abundance[as.logical(extinct)] <- 0
 
 return(abundance)
 
-
 # we could do all sort of complicated things here now, like adding an extinction
 # background rate or add fluctuations to species with low abundances.
-
 
 # ----------
 # another solution, if we would have a growth mechanisms (i.e. that increases abundances
